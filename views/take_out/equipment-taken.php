@@ -54,13 +54,32 @@ require ("../../config/db-config.php");
                                     </tr>
                                 </thead>
                                 <tbody class="ligth-body">
-                                    <tr>
-                                        <td>Rugby Ball</td>
-                                        <td>RBG01</td>
-                                        <td>Rugby</td>
-                                        <td>Gilbert</td>
-                                        <td>7</td>
-                                    </tr>
+                                <?php
+                                            //fetch data from db
+
+                                            
+                                            $sql = "SELECT `reference`, `user_id`, `name`, `quantity`, `date`,
+                                            FROM take_out";
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $resultCheck = mysqli_num_rows($result);
+
+                                            if ($resultCheck > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '
+                                                                <tr>
+                                                                    <td>' . $row['reference'] . '</td>
+                                                                    <td>' . $row['user_id'] . '</td>
+                                                                    <td>' . $row['name'] . '</td>      
+                                                                    <td>' . $row['quantity']. '</td>
+                                                                    <td>' . $row['date']. '</td>
+                                                                </tr>';
+                        }
+                    }
+
+                                            ?>
                                 </tbody>
                             </table>
                         </div>
