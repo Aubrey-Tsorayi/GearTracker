@@ -58,7 +58,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `reference`, `user_id`, `name`, `quantity`, `date`,
+                                            $sql = "SELECT `reference`, `user_id`, `name`, `quantity`, `date`
                                             FROM take_out";
 
                                             //result
@@ -72,8 +72,8 @@ require ("../../config/db-config.php");
                                                                 <tr>
                                                                     <td>' . $row['reference'] . '</td>
                                                                     <td>' . $row['user_id'] . '</td>
-                                                                    <td>' . $row['name'] . '</td>      
-                                                                    <td>' . $row['quantity']. '</td>
+                                                                    <td>' . $row['name'] . '</td>
+                                                                    <td>' . $row['quantity'] . '</td>
                                                                     <td>' . $row['date']. '</td>
                                                                 </tr>';
                         }
