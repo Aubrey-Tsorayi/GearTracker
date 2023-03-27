@@ -61,14 +61,7 @@ require ("../../config/db-config.php");
                 <div class="col-lg-4">
                     <div class="card card-transparent card-block card-stretch card-height border-none">
                         <div class="card-body p-0 mt-lg-2 mt-0">
-                            <?php
-                        $sql = "SELECT * FROM `users` WHERE  `ID` = '210392'";
-
-                        $result = mysqli_query($conn, $sql);
-                        while($row = mysqli_fetch_row($result))
-                        { ?>
                             <h3 class="mb-3">Hi <?php echo $_SESSION['name']; ?> </h3>
-                            <?php } ?>
                         </div>
                     </div>
                 </div>
