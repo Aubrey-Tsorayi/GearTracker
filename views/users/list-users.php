@@ -91,7 +91,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `ID`, `Name`, `Email`, `PhoneNumber`, `Sport`
+                                            $sql = "SELECT `user_id`, `Name`, `Email`, `PhoneNumber`, `Sport`
                                             FROM users";
 
                                             //result
@@ -109,7 +109,7 @@ require ("../../config/db-config.php");
                                                                             <label for="checkbox2" class="mb-0"></label>
                                                                             </div>
                                                                     </td>
-                                                                    <td>' . $row['ID'] . '</td>
+                                                                    <td>' . $row['user_id'] . '</td>
                                                                     <td>' . $row['Name'] . '</td>
                                                                     <td>' . $row['PhoneNumber'] . '</td>
                                                                     <td>' . $row['Email'] . '</td>
