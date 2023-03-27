@@ -46,12 +46,11 @@ require ("../../config/db-config.php");
                             <table class="data-table table mb-0 tbl-server-info">
                                 <thead class="bg-white text-uppercase">
                                     <tr class="ligth ligth-data">
-                                        <th>Equipment</th>
-                                        <th>Code</th>
-                                        <th>Sport</th>
-                                        <th>Brand Name</th>
-                                        <th>Available</th>
+                                        <th>Reference</th>
+                                        <th>User</th>
+                                        <th>Equipment Name</th>
                                         <th>Quantity</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody class="ligth-body">
@@ -61,7 +60,6 @@ require ("../../config/db-config.php");
                                         <td>Rugby</td>
                                         <td>Gilbert</td>
                                         <td>7</td>
-                                        <td>10.0</td>
                                     </tr>
                                 </tbody>
                             </table>
