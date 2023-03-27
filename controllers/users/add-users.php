@@ -11,7 +11,8 @@ if (isset($_POST['submit'])){
     $id = $_POST['id'];
     $passw = $_POST['password'];
 
-    $query = "INSERT INTO `users`(`ID`, `Name`, `Email`, `PhoneNumber`, `password`, `Sport`) VALUES ('$id','$name','$email','$number','$passw','$sport')";
+    $query = "INSERT INTO `users`(`ID`, `Name`, `Email`, `PhoneNumber`, `password`, `Sport`) 
+    VALUES ('$id','$name','$email','$number','$passw','$sport')";
 
     $request = mysqli_query($conn, $query);
 
