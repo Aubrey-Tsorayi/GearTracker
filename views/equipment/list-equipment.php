@@ -46,7 +46,7 @@ require ("../../config/db-config.php");
                             <table class="data-table table mb-0 tbl-server-info">
                                 <thead class="bg-white text-uppercase">
                                     <tr class="ligth ligth-data">
-                                        <th>Equipment ID</th>
+                                        <th>Equipment Code</th>
                                         <th>Name</th>
                                         <th>Sport</th>
                                         <th>Quantity</th>
@@ -55,14 +55,49 @@ require ("../../config/db-config.php");
                                     </tr>
                                 </thead>
                                 <tbody class="ligth-body">
-                                    <tr>
-                                        <td>Rugby Ball</td>
-                                        <td>RBG01</td>
-                                        <td>Rugby</td>
-                                        <td>Gilbert</td>
-                                        <td>7</td>
-                                        <td>10.0</td>
-                                    </tr>
+                                <?php
+                                            //fetch data from db
+
+                                            
+                                            $sql = "SELECT `code`, `name`, `sport`, `qantity`, `quantity_available`,`description`
+                                            FROM equipment;
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $resultCheck = mysqli_num_rows($result);
+
+                                            if ($resultCheck > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="checkbox d-inline-block">
+                                                                            <input type="checkbox" class="checkbox-input" id="checkbox2">
+                                                                            <label for="checkbox2" class="mb-0"></label>
+                                                                            </div>
+                                                                    </td>
+                                                                    <td>' . $row['code'] . '</td>
+                                                                    <td>' . $row['name'] . '</td>
+                                                                    <td>' . $row['sport'] . '</td>
+                                                                    <td>' . $row['quantity'] . '</td>
+                                                                    <td>' . $row['quantity_available']. '</td>
+                                                                    <td>' . $row['description']. '</td>
+                                                                    <td>
+                                                                        <div class="d-flex align-items-center list-action">
+                                                                            <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                                                                href="#"><i class="ri-eye-line mr-0"></i></a>
+                                                                            <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                                                                href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                                                            <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                                                                href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>';
+                        }
+                    }
+
+                                            ?>
                                 </tbody>
                             </table>
                         </div>
