@@ -25,49 +25,47 @@ require ("../../config/db-config.php");
                 <?php
               require('../../includes/nav.php');
               ?>
+          </div>
+      </div>
+      <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
+      </div>      <div class="content-page">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="mb-3">Equipment List</h4>
+                    </div>
+                    <a href="add-equipment.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Equipment</a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="table-responsive rounded mb-3">
+                <table class="data-table table mb-0 tbl-server-info">
+                    <thead class="bg-white text-uppercase">
+                        <tr class="ligth ligth-data">
+                            <th>Equipment ID</th>
+                            <th>Name</th>
+                            <th>Sport</th>
+                            <th>Quantity</th>
+                            <th>Quantity Available</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ligth-body">
+                        <tr>
+                            <td>Rugby Ball</td>
+                            <td>RBG01</td>
+                            <td>Rugby</td>
+                            <td>Gilbert</td>
+                            <td>7</td>
+                            <td>10.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
             </div>
         </div>
-        <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
-        </div>
-        <div class="content-page">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
-                            <div>
-                                <h4 class="mb-3">Equipment List</h4>
-                            </div>
-                            <a href="add-equipment.php" class="btn btn-primary add-list"><i
-                                    class="las la-plus mr-3"></i>Add Equipment</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="table-responsive rounded mb-3">
-                            <table class="data-table table mb-0 tbl-server-info">
-                                <thead class="bg-white text-uppercase">
-                                    <tr class="ligth ligth-data">
-                                        <th>Equipment</th>
-                                        <th>Code</th>
-                                        <th>Sport</th>
-                                        <th>Brand Name</th>
-                                        <th>Available</th>
-                                        <th>Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="ligth-body">
-                                    <tr>
-                                        <td>Rugby Ball</td>
-                                        <td>RBG01</td>
-                                        <td>Rugby</td>
-                                        <td>Gilbert</td>
-                                        <td>7</td>
-                                        <td>10.0</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
                 <!-- Page end  -->
             </div>
             <!-- Modal Edit -->

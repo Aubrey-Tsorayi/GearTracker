@@ -339,19 +339,19 @@ require ("../../config/db-config.php");
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="https://templates.iqonic.design/posdash/html/backend/page-list-product.html" data-toggle="validator">
+                        <form action="../../controllers/add-equipment.php" data-toggle="validator">
                             <div class="row">
                                 <div class="col-md-6">                      
                                     <div class="form-group">
-                                        <label>Brand Name *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                        <label>Equipment Name *</label>
+                                        <input type="text" name="name" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>    
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Code *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." required>
+                                        <input type="text" name="code" class="form-control" placeholder="Enter Code" data-errors="Please Enter Code." required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div> 
@@ -371,22 +371,22 @@ require ("../../config/db-config.php");
                                 </div> 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Equipment *</label>
-                                        <input type="text" class="form-control" placeholder="Ball" data-errors="Please Enter Code." required>
+                                        <label>Quantity Available *</label>
+                                        <input type="text" name="equipment" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Code." required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">                                    
                                     <div class="form-group">
                                         <label>Quantity *</label>
-                                        <input type="text" class="form-control" placeholder="Enter Quantity" required>
+                                        <input type="text" name="quantity" class="form-control" placeholder="Enter Quantity" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                               <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Image</label>
-                                        <input type="file" class="form-control image-file" name="pic" accept="image/*">
-                                    </div>
+                                        <label> Equipment Description</label>
+                                        <input type="text" name="description" class="form-control">
+                                    </div> 
                                 </div>
                             </div>                            
                             <button type="submit" class="btn btn-primary mr-2">Add Equipment</button>
