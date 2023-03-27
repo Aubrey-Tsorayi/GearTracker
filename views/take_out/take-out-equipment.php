@@ -63,7 +63,7 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="https://templates.iqonic.design/posdash/html/backend/page-list-product.html"
+                            <form action="../../controllers/take_out/take-out-equipment.php" method="POST"
                                 data-toggle="validator">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -82,10 +82,11 @@ require ("../../config/db-config.php");
                                             $equipment_names[] = $row['name'];
                                             }
                                             ?>
-                                            <select id="equipment" name="equipment" class="selectpicker form-control" data-style="py-0">
-                                            <?php foreach ($equipment_names as $name): ?>
-                                            <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
-                                            <?php endforeach; ?>
+                                            <select id="equipment" name="equipment" class="selectpicker form-control"
+                                                data-style="py-0">
+                                                <?php foreach ($equipment_names as $name): ?>
+                                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -93,7 +94,7 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Sport *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
+                                            <select name="sport" class="selectpicker form-control" data-style="py-0">
                                                 <option value="Rugby">Rugby</option>
                                                 <option value="Soccer">Soccer</option>
                                                 <option value="Basketball">Basketball</option>
@@ -107,12 +108,12 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity *</label>
-                                            <input type="text" class="form-control" placeholder="Ball"
+                                            <input type="text" name="quantity" class="form-control" placeholder="Ball"
                                                 data-errors="Please Enter Code." required>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary mr-2">Add Equipment</button>
+                                <button type="submit" name="submit" class="btn btn-primary mr-2">Add Equipment</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>
