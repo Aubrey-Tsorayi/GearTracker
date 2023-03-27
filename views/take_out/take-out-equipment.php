@@ -24,7 +24,7 @@ require ("../../config/db-config.php");
     </div>
     <div class="iq-top-navbar">
         <div class="iq-navbar-custom">
-        <?php
+            <?php
               require('../../includes/nav.php');
               ?>
         </div>
@@ -68,17 +68,25 @@ require ("../../config/db-config.php");
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Brand Name *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Name"
-                                                data-errors="Please Enter Name." required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Code *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Code"
-                                                data-errors="Please Enter Code." required>
+                                            <label>Name of Equipment *</label>
+                                            <?php
+                                            $sql = "SELECT name, quantity FROM equipment WHERE quantity > 0";
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $equipment_names = array();
+
+                                            // Loop through the query results and add the equipment names to the array
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            $equipment_names[] = $row['name'];
+                                            }
+                                            ?>
+                                            <select id="equipment" name="equipment" class="selectpicker form-control" data-style="py-0">
+                                            <?php foreach ($equipment_names as $name): ?>
+                                            <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                                            <?php endforeach; ?>
+                                            </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -98,17 +106,9 @@ require ("../../config/db-config.php");
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Equipment *</label>
+                                            <label>Quantity *</label>
                                             <input type="text" class="form-control" placeholder="Ball"
                                                 data-errors="Please Enter Code." required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Quantity *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Quantity"
-                                                required>
-                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                 </div>
