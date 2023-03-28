@@ -63,7 +63,7 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="../../controllers/take_out/take-out-equipment.php" method="POST"
+                            <form method="post" action="../../controllers/take-out/take-out-equipment.php"
                                 data-toggle="validator">
                                 <div class="row">
                                     <div class="col-md-6">

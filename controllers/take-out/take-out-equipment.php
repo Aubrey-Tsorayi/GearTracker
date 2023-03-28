@@ -2,7 +2,7 @@
 session_start();
 require ("../../config/db-config.php");
 
-if (isset($_POST['name'])){
+if (isset($_POST['submit'])){
 
     // getting info from form
     $equipment = $_POST['equipment'];
@@ -12,13 +12,13 @@ if (isset($_POST['name'])){
     $user = $_SESSION['user_id'];
 
     // Generate the new reference code
-    $result = mysqli_query($conn, 'SELECT MAX(SUBSTRING(ref_code, 8)) FROM your_table_name');
+    $result = mysqli_query($conn, 'SELECT MAX(take_out_id) FROM take_out');
     $max_ref_num = mysqli_fetch_row($result)[0];
     $new_ref_num = $max_ref_num + 1;
     // Generate the new reference code
     $reference = 'TAKEOUT' . $new_ref_num;     
 
-    $query = "INSERT INTO `take_out`(`name`,`equipment_id`, `user_id`, `date`, `quantity`, `reference`) 
+    $query = "INSERT INTO `take_out`(`name`,`code`, `user_id`, `date`, `quantity`, `reference`) 
     VALUES ('$equipment','$sport','$user','$current_date','$quantity','$reference')";
 
     $request = mysqli_query($conn, $query);
