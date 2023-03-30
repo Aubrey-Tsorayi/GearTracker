@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -63,59 +63,74 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="https://templates.iqonic.design/posdash/html/backend/page-list-returns.html"
+                            <form method="post" action="">
+                            <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Reference No *</label>
+                                            <input type="text" name="reference" class="form-control"
+                                                placeholder="Enter Reference No" required>
+                                            <div class="help-block with-errors"></div>
+                                            <br>
+                                            <button type="submit" name="search" class="btn btn-success">Search</button>
+                                            <?php
+                                            $name = "";
+                                            $quantity = "";
+                                            if (isset($_POST['search'])) {
+                                                $ref_code = mysqli_real_escape_string($conn, $_POST['reference']);
+                                              
+                                                // Query database
+                                                $query = "SELECT `user_id`, `quantity` FROM `take_out` WHERE `reference`='$ref_code'";
+                                                $result = mysqli_query($conn, $query);
+                                              
+                                                if (mysqli_num_rows($result) > 0) {
+                                                  $row = mysqli_fetch_assoc($result);
+                                                  $name = $row['user_id'];
+                                                  $quantity = $row['quantity'];
+                                                }
+                                              }
+                                              
+                                              mysqli_close($conn);
+                                              ?>
+                                        </div>
+                                    </div>
+                            </form>
+                            <form action="../../controllers/returns/add-return.php" method="post"
                                 data-toggle="validator">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Date *</label>
-                                            <input type="text" class="form-control">
+                                            <label>User </label>
+                                            <input type="text" class="form-control" placeholder="<?php echo $_SESSION['name']; ?>"
+                                                readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Reference No *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Reference No"
-                                                required>
+                                            <label>Returnee </label>
+                                            <input type="text" class="form-control" value="<?php echo $name; ?>"
+                                                >
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Biller *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
-                                                <option>Test Biller</option>
+                                            <label>Damaged </label>
+                                            <select name="damaged" class="selectpicker form-control" data-style="py-0">
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Customer *</label>
-                                            <input type="text" class="form-control" placeholder="Enter Customer Name"
-                                                required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Order Tax *</label>
-                                            <select name="type" class="selectpicker form-control" data-style="py-0">
-                                                <option>No Text</option>
-                                                <option>GST @5%</option>
-                                                <option>VAT @10%</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Order Discount</label>
-                                            <input type="text" class="form-control" placeholder="Discount">
+                                            <label>Quantity</label>
+                                            <input type="text" class="form-control" placeholder="<?php echo $quantity?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Shipping</label>
-                                            <input type="text" class="form-control" placeholder="Shipping">
+                                            <label>Description (optional)</label>
+                                            <input type="text" class="form-control" placeholder="How is equipment damaged">
                                         </div>
                                     </div>
                                 </div>

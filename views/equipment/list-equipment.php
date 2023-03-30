@@ -59,7 +59,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `code`, `name`, `sport`, `quantity`, `quantity_available`, `description`
+                                            $sql = "SELECT `code`, `name`, `sport`, `quantity`, `quantity_availalble`, `description`
                                             FROM equipment";
 
                                             //result
@@ -75,7 +75,7 @@ require ("../../config/db-config.php");
                                                                     <td>' . $row['name'] . '</td>
                                                                     <td>' . $row['sport'] . '</td>
                                                                     <td>' . $row['quantity'] . '</td>
-                                                                    <td>' . $row['quantity_available']. '</td>
+                                                                    <td>' . $row['quantity_availalble']. '</td>
                                                                     <td>' . $row['description']. '</td>
                                                                 </tr>';
                         }

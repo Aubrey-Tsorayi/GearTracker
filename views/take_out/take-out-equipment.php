@@ -95,8 +95,8 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Sport *</label>
                                             <select name="sport" class="selectpicker form-control" data-style="py-0">
-                                                <option value="Rugby">Rugby</option>
-                                                <option value="Soccer">Soccer</option>
+                                                <option value="RG01">Rugby</option>
+                                                <option value="SC01">Soccer</option>
                                                 <option value="Basketball">Basketball</option>
                                                 <option value="VolleyBall">VolleyBall</option>
                                                 <option value="Swimming">Swimming</option>
