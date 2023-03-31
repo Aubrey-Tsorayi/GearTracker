@@ -72,12 +72,6 @@ require ("../../config/db-config.php");
                         <table class="data-table table mb-0 tbl-server-info">
                             <thead class="bg-white text-uppercase">
                                 <tr class="ligth ligth-data">
-                                    <th>
-                                        <div class="checkbox d-inline-block">
-                                            <input type="checkbox" class="checkbox-input" id="checkbox1">
-                                            <label for="checkbox1" class="mb-0"></label>
-                                        </div>
-                                    </th>
                                     <th>Student ID</th>
                                     <th>Name</th>
                                     <th>Phone Number</th>
@@ -103,12 +97,6 @@ require ("../../config/db-config.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                         echo '
                                                                 <tr>
-                                                                    <td>
-                                                                        <div class="checkbox d-inline-block">
-                                                                            <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                                                            <label for="checkbox2" class="mb-0"></label>
-                                                                            </div>
-                                                                    </td>
                                                                     <td>' . $row['user_id'] . '</td>
                                                                     <td>' . $row['Name'] . '</td>
                                                                     <td>' . $row['PhoneNumber'] . '</td>
@@ -116,14 +104,21 @@ require ("../../config/db-config.php");
                                                                     <td>' . $row['Sport']. '</td>
                                                                     <td>
                                                                             <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                                                                href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                                                                href="?delete_user=' . $row['user_id'] . '"><i class="ri-delete-bin-line mr-0"></i></a>
                                                                         </div>
                                                                     </td>
                                                                 </tr>';
                         }
                     }
-
-                                            ?>
+                                                                                // handle delete request
+                                                                if (isset($_GET['delete_user'])) {
+                                                                    $user_id = $_GET['delete_user'];
+                                                                    $sql = "DELETE FROM users WHERE user_id = $user_id";
+                                                                    mysqli_query($conn, $sql);
+                                                                    echo '<script> window.location.href="../../views/users/list-users.php"; </script>';
+                                                                    exit();
+                                                                }
+                                                                ?>
                             </tbody>
                         </table>
                     </div>

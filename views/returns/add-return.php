@@ -79,7 +79,10 @@ require ("../../config/db-config.php");
                                                 $ref_code = mysqli_real_escape_string($conn, $_POST['reference']);
                                               
                                                 // Query database
-                                                $query = "SELECT `user_id`, `quantity` FROM `take_out` WHERE `reference`='$ref_code'";
+                                                $query = "SELECT `users.Name`, `quantity` 
+                                                FROM `take_out` 
+                                                WHERE `reference`='$ref_code'
+                                                INNER JOIN `users` ON `take_out.user_id` = `users.users_id`";
                                                 $result = mysqli_query($conn, $query);
                                               
                                                 if (mysqli_num_rows($result) > 0) {
