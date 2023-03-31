@@ -11,10 +11,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -84,13 +84,34 @@ require ("../../config/db-config.php");
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
-                                <tr>
-                                    <td>01 jan 2021</td>
-                                    <td>RETURN2001</td>
-                                    <td>Test Biller</td>
-                                    <td>Pete Sariya</td>
-                                    <td>20.5</td>
-                                </tr>
+                            <?php
+                                            //fetch data from db
+
+                                            
+                                            $sql = "SELECT `ID`, `take_out_id`, `date`, `shortfall`, `damaged`, `description`
+                                            FROM `returns`";
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $resultCheck = mysqli_num_rows($result);
+
+                                            if ($resultCheck > 0) {
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                        echo '
+                                                                <tr>
+                                                                    <td>' . $row['date'] . '</td>
+                                                                    <td>' . $row['take_out_id'] . '</td>
+                                                                    <td>' . $row['ID'] . '</td>
+                                                                    <td>' . $row['ID'] . '</td>
+                                                                    <td>' . $row['shortfall'] . '</td>
+                                                                    <td>' . $row['damaged']. '</td>
+                                                                    <td>' . $row['description']. '</td>
+                                                                </tr>';
+                        }
+                    }
+
+                                            ?>
                             </tbody>
                         </table>
                     </div>

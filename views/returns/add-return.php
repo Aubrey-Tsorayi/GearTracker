@@ -64,25 +64,24 @@ require ("../../config/db-config.php");
                         </div>
                         <div class="card-body">
                             <form method="post" action="">
-                            <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Reference No *</label>
-                                            <input type="text" name="reference" class="form-control"
-                                                placeholder="Enter Reference No" required>
-                                            <div class="help-block with-errors"></div>
-                                            <br>
-                                            <button type="submit" name="search" class="btn btn-success">Search</button>
-                                            <?php
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Reference No *</label>
+                                        <input type="text" name="reference" class="form-control"
+                                            placeholder="Enter Reference No" required>
+                                        <div class="help-block with-errors"></div>
+                                        <br>
+                                        <button type="submit" name="search" class="btn btn-success">Search</button>
+                                        <?php
                                             $name = "";
                                             $quantity = "";
                                             if (isset($_POST['search'])) {
                                                 $ref_code = mysqli_real_escape_string($conn, $_POST['reference']);
                                               
                                                 // Query database
-                                                $query = "SELECT `users.Name`, `quantity` 
+                                                $query = "SELECT `user_id`, `quantity` 
                                                 FROM `take_out` 
-                                                WHERE `reference`='$ref_code'
-                                                INNER JOIN `users` ON `take_out.user_id` = `users.users_id`";
+                                                WHERE `reference`='$ref_code'";
                                                 $result = mysqli_query($conn, $query);
                                               
                                                 if (mysqli_num_rows($result) > 0) {
@@ -94,24 +93,24 @@ require ("../../config/db-config.php");
                                               
                                               mysqli_close($conn);
                                               ?>
-                                        </div>
                                     </div>
+                                </div>
                             </form>
                             <form action="../../controllers/returns/add-return.php" method="post"
                                 data-toggle="validator">
                                 <div class="row">
+                                    <input type="text" name="reference" class="form-control" value="<?php echo $ref_code; ?>" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>User </label>
-                                            <input type="text" class="form-control" placeholder="<?php echo $_SESSION['name']; ?>"
-                                                readonly>
+                                            <input type="text" name="name" class="form-control"
+                                                placeholder="<?php echo $_SESSION['name']; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Returnee </label>
-                                            <input type="text" class="form-control" value="<?php echo $name; ?>"
-                                                >
+                                            <input type="text" name="returnee" class="form-control" value="<?php echo $name; ?>">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -119,25 +118,27 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Damaged </label>
                                             <select name="damaged" class="selectpicker form-control" data-style="py-0">
-                                                <option value="No">No</option>
-                                                <option value="Yes">Yes</option>
+                                                <option value="N">No</option>
+                                                <option value="Y">Yes</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input type="text" class="form-control" placeholder="<?php echo $quantity?>">
+                                            <input type="text" name="quantity" class="form-control"
+                                                placeholder="<?php echo $quantity?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Description (optional)</label>
-                                            <input type="text" class="form-control" placeholder="How is equipment damaged">
+                                            <input type="text" name="description" class="form-control"
+                                                placeholder="How is equipment damaged">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary mr-2">Add Returns</button>
+                                <button type="submit" name="submit" class="btn btn-primary mr-2">Add Returns</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>
