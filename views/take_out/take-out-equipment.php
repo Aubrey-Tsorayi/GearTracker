@@ -108,12 +108,12 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity *</label>
-                                            <input type="text" name="quantity" class="form-control" placeholder="Ball"
+                                            <input type="text" name="quantity" class="form-control" placeholder="Enter Number"
                                                 data-errors="Please Enter Code." required>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-primary mr-2">Add Equipment</button>
+                                <button type="submit" name="submit" class="btn btn-primary mr-2">Take Equipment</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>
