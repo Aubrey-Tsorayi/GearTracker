@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <!-- <div id="loading">
+    <div id="loading">
         <div id="loading-center">
         </div>
-    </div> -->
+    </div>
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -99,7 +99,8 @@ require ("../../config/db-config.php");
                             <form action="../../controllers/returns/add-return.php" method="post"
                                 data-toggle="validator">
                                 <div class="row">
-                                    <input type="text" name="reference" class="form-control" value="<?php echo $ref_code; ?>" hidden>
+                                    <input type="text" name="reference" class="form-control"
+                                        value="<?php echo $ref_code; ?>" hidden>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>User </label>
@@ -110,7 +111,8 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Returnee </label>
-                                            <input type="text" name="returnee" class="form-control" value="<?php echo $name; ?>">
+                                            <input type="text" name="returnee" class="form-control"
+                                                value="<?php echo $name; ?>">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
