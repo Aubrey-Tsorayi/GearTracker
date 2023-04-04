@@ -46,7 +46,7 @@ require ("../../config/db-config.php");
                             <table class="data-table table mb-0 tbl-server-info">
                                 <thead class="bg-white text-uppercase">
                                     <tr class="ligth ligth-data">
-                                        <th>Reference</th>
+                                        <th>Take Out ID</th>
                                         <th>User</th>
                                         <th>Equipment Name</th>
                                         <th>Quantity</th>
@@ -58,7 +58,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `reference`, `user_id`, `name`, `quantity`, `date`
+                                            $sql = "SELECT `take_out_id`, `user_id`, `equipment_name`, `quantity`, `date`
                                             FROM take_out";
 
                                             //result
@@ -70,9 +70,9 @@ require ("../../config/db-config.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                         echo '
                                                                 <tr>
-                                                                    <td>' . $row['reference'] . '</td>
+                                                                    <td>' . $row['take_out_id'] . '</td>
                                                                     <td>' . $row['user_id'] . '</td>
-                                                                    <td>' . $row['name'] . '</td>
+                                                                    <td>' . $row['equipment_name'] . '</td>
                                                                     <td>' . $row['quantity'] . '</td>
                                                                     <td>' . $row['date']. '</td>
                                                                 </tr>';

@@ -85,7 +85,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `user_id`, `Name`, `Email`, `PhoneNumber`, `Sport`
+                                            $sql = "SELECT `user_id`, `user_name`, `email`, `phone_number`, `sport`
                                             FROM users";
 
                                             //result
@@ -98,10 +98,10 @@ require ("../../config/db-config.php");
                                                         echo '
                                                                 <tr>
                                                                     <td>' . $row['user_id'] . '</td>
-                                                                    <td>' . $row['Name'] . '</td>
-                                                                    <td>' . $row['PhoneNumber'] . '</td>
-                                                                    <td>' . $row['Email'] . '</td>
-                                                                    <td>' . $row['Sport']. '</td>
+                                                                    <td>' . $row['user_name'] . '</td>
+                                                                    <td>' . $row['phone_number'] . '</td>
+                                                                    <td>' . $row['email'] . '</td>
+                                                                    <td>' . $row['sport']. '</td>
                                                                     <td>
                                                                             <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
                                                                                 href="?delete_user=' . $row['user_id'] . '"><i class="ri-delete-bin-line mr-0"></i></a>

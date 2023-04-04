@@ -11,7 +11,7 @@ if (isset($_POST['name'])){
     $quantity_available = $_POST['equipment'];
     $description = $_POST['description'];
 
-    $query = "INSERT INTO `equipment`(`name`, `code`, `sport`, `quantity`, `quantity_available`, `description`) 
+    $query = "INSERT INTO `equipment`(`equipment_name`, `equipment_code`, `sport`, `quantity`, `quantity_available`, `description`) 
     VALUES ('$name','$code','$sport','$quantity','$quantity_available','$description')";
 
     $request = mysqli_query($conn, $query);
