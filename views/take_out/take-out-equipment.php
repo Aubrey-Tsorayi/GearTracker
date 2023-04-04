@@ -70,7 +70,9 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Name of Equipment *</label>
                                             <?php
-                                            $sql = "SELECT name, quantity FROM equipment WHERE quantity > 0";
+                                            $sql = "SELECT `equipment_name`, `quantity` 
+                                            FROM `equipment` 
+                                            WHERE `quantity` > 0";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -79,7 +81,7 @@ require ("../../config/db-config.php");
 
                                             // Loop through the query results and add the equipment names to the array
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                            $equipment_names[] = $row['name'];
+                                            $equipment_names[] = $row['equipment_name'];
                                             }
                                             ?>
                                             <select id="equipment" name="equipment" class="selectpicker form-control"

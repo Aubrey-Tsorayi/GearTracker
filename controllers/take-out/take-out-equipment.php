@@ -19,15 +19,15 @@ if (isset($_POST['submit'])){
     $reference = 'TAKEOUT' . $new_ref_num;     
 
     // getting available quantity and updating it with the new available
-    $available = mysqli_query($conn,"SELECT `quantity_availalble` FROM `equipment` WHERE code = '$sport'");
+    $available = mysqli_query($conn,"SELECT `quantity_availalble` FROM `equipment` WHERE `equipment_code` = '$sport'");
     $available_quantity = mysqli_fetch_row($available)[0];
     $new_quantity = $available_quantity - $quantity;
     // updating the new quantity in the equipment using code
-    $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_availalble`='$new_quantity' WHERE `code` = '$sport'");
+    $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_availalble`='$new_quantity' WHERE `equipment_code` = '$sport'");
 
 
-    $query = "INSERT INTO `take_out`(`name`,`code`, `user_id`, `date`, `quantity`, `reference`) 
-    VALUES ('$equipment','$sport','$user','$current_date','$quantity','$reference')";
+    $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_name`, `date`, `quantity`)
+    VALUES ('$reference','$sport', '$equipment', '$user','$current_date','$quantity',)";
 
     $request = mysqli_query($conn, $query);
 

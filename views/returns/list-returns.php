@@ -88,7 +88,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `ID`, `take_out_id`, `date`, `shortfall`, `damaged`, `description`
+                                            $sql = "SELECT `take_out_id`, `date`, `shortfall`, `damaged`, `description`
                                             FROM `returns`";
 
                                             //result
@@ -102,8 +102,8 @@ require ("../../config/db-config.php");
                                                                 <tr>
                                                                     <td>' . $row['date'] . '</td>
                                                                     <td>' . $row['take_out_id'] . '</td>
-                                                                    <td>' . $row['ID'] . '</td>
-                                                                    <td>' . $row['ID'] . '</td>
+                                                                    <td>' . $row['take_out_id'] . '</td>
+                                                                    <td>' . $row['take_out_id'] . '</td>
                                                                     <td>' . $row['shortfall'] . '</td>
                                                                     <td>' . $row['damaged']. '</td>
                                                                     <td>' . $row['description']. '</td>

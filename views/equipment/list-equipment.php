@@ -59,7 +59,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `code`, `name`, `sport`, `quantity`, `quantity_available`, `description`
+                                            $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
                                             FROM equipment";
 
                                             //result
@@ -71,8 +71,8 @@ require ("../../config/db-config.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                         echo '
                                                                 <tr>
-                                                                    <td>' . $row['code'] . '</td>
-                                                                    <td>' . $row['name'] . '</td>
+                                                                    <td>' . $row['equipment_code'] . '</td>
+                                                                    <td>' . $row['equipment_name'] . '</td>
                                                                     <td>' . $row['sport'] . '</td>
                                                                     <td>' . $row['quantity'] . '</td>
                                                                     <td>' . $row['quantity_available']. '</td>

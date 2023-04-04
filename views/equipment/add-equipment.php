@@ -98,17 +98,9 @@ require ("../../config/db-config.php");
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Quantity Available *</label>
+                                            <label>Quantity *</label>
                                             <input type="text" name="equipment" class="form-control"
                                                 placeholder="Enter Quantity" data-errors="Please Enter Code." required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label>Quantity *</label>
-                                            <input type="text" name="quantity" class="form-control"
-                                                placeholder="Enter Quantity" required>
-                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

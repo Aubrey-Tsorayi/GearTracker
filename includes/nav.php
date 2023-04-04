@@ -66,7 +66,7 @@
                         <div class="card shadow-none m-0">
                             <div class="card-body p-0 text-center">
                                 <div class="p-3">
-                                    <h5 class="mb-1"><?php echo $_SESSION['name']; ?></h5>
+                                    <h5 class="mb-1"><?php echo $_SESSION['user_name']; ?></h5>
                                     <div class="d-flex align-items-center justify-content-center mt-3">
 
                                         <a href="../auth/logout.php" class="btn border">Sign Out</a>
