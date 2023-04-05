@@ -11,7 +11,7 @@ if (isset($_POST['submit'])){
     $current_date = date('Y-m-d');
     $user = $_SESSION['user_id'];
 
-    // Generate the new reference code
+    // Generate the new reference code for take out ID
     $result = mysqli_query($conn, 'SELECT MAX(take_out_id) FROM take_out');
     $max_ref_num = mysqli_fetch_row($result)[0];
     $new_ref_num = $max_ref_num + 1;

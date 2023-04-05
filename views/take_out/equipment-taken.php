@@ -46,7 +46,7 @@ require ("../../config/db-config.php");
                             <table class="data-table table mb-0 tbl-server-info">
                                 <thead class="bg-white text-uppercase">
                                     <tr class="ligth ligth-data">
-                                        <th>Reference</th>
+                                        <th>Take Out ID</th>
                                         <th>User</th>
                                         <th>Equipment Name</th>
                                         <th>Quantity</th>
