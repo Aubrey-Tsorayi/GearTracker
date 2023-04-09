@@ -108,16 +108,17 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" name="password" class="form-control"
-                                                placeholder="Enter Password" required>
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                placeholder="Enter Password" onkeyup='check();' required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input type="text" class="form-control" placeholder="Enter Confirm Password"
-                                                required>
+                                            <input type="password" id="confirm_password" class="form-control"
+                                                placeholder="Enter Confirm Password" onkeyup='check();' required>
+                                                <span id='message'></span>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -159,6 +160,18 @@ require ("../../config/db-config.php");
             </div>
         </div>
     </footer>
+    <script>
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+        }
+    }
+    </script>
     <!-- Backend Bundle JavaScript -->
     <?php
     require("../../includes/scripts.php");
