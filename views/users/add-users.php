@@ -63,7 +63,7 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="../../controllers/users/add-users.php" data-toggle="validator">
+                            <form method="post" action="../../controllers/users/add-users.php" data-toggle="validator" onsubmit="return confirm('Do you really want to submit the form?');">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
