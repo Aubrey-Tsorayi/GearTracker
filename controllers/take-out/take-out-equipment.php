@@ -11,23 +11,29 @@ if (isset($_POST['submit'])){
     $current_date = date('Y-m-d');
     $user = $_SESSION['user_id'];
 
+
     // Generate the new reference code for take out ID
-    $result = mysqli_query($conn, 'SELECT MAX(take_out_id) FROM take_out');
+    $result = mysqli_query($conn, 'SELECT COUNT(take_out_id) FROM take_out');
     $max_ref_num = mysqli_fetch_row($result)[0];
-    $new_ref_num = $max_ref_num + 1;
+    if($max_ref_num == 0){
+        $reference = 'TAKEOUT0';
+    }else{
+        $new_ref_num = $max_ref_num + 1;
     // Generate the new reference code
-    $reference = 'TAKEOUT' . $new_ref_num;     
+    $reference = 'TAKEOUT' . $new_ref_num;
+    }
+         
 
     // getting available quantity and updating it with the new available
-    $available = mysqli_query($conn,"SELECT `quantity_availalble` FROM `equipment` WHERE `equipment_code` = '$sport'");
+    $available = mysqli_query($conn,"SELECT `quantity_available` FROM `equipment` WHERE `equipment_code` = '$sport'");
     $available_quantity = mysqli_fetch_row($available)[0];
     $new_quantity = $available_quantity - $quantity;
     // updating the new quantity in the equipment using code
-    $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_availalble`='$new_quantity' WHERE `equipment_code` = '$sport'");
+    $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available`='$new_quantity' WHERE `equipment_code` = '$sport'");
 
 
-    $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_name`, `date`, `quantity`)
-    VALUES ('$reference','$sport', '$equipment', '$user','$current_date','$quantity',)";
+    $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_id`, `date`, `quantity`)
+    VALUES ('$reference','$sport', '$equipment', '$user','$current_date','$quantity')";
 
     $request = mysqli_query($conn, $query);
 

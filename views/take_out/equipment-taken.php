@@ -58,7 +58,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `take_out_id`, `equipment_name`, `user_id`, `user_name`, `quantity`, `date`
+                                            $sql = "SELECT `take_out_id`, `equipment_name`, `user_id`, `quantity`, `date`
                                             FROM take_out";
 
                                             //result
