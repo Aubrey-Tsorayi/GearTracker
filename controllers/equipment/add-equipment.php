@@ -1,8 +1,9 @@
 <?php
+session_start();
 require ("../../config/db-config.php");
 
 if (isset($_POST['name'])){
-
+    session_start();
     // getting info from form
     $name = $_POST['name'];
     $code =$_POST['code'];

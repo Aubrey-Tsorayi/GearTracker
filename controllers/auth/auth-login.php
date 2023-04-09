@@ -1,8 +1,9 @@
 <?php
+session_start();
 require ("../../config/db-config.php");
 
 if(isset($_POST['user'])) {
-    session_start();
+    
     // taking info from the view
     $user = $_POST['user'];
     $passw = $_POST['password'];

@@ -84,12 +84,14 @@ require ("../../config/db-config.php");
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
-                            <?php
+                                <?php
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `take_out_id`, `date`, `shortfall`, `damaged`, `description`
-                                            FROM `returns`";
+                                            $sql = "SELECT `returns`.`take_out_id`, `returns`.`date`, `returns`.`shortfall`, `returns`.`damaged`, `returns`.`description`, `returns`.`return_admin`, `users`.`user_name`
+                                            FROM `returns`
+                                            INNER JOIN `take_out` ON `returns`.`take_out_id` = `take_out`.`take_out_id`
+                                            INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -102,8 +104,8 @@ require ("../../config/db-config.php");
                                                                 <tr>
                                                                     <td>' . $row['date'] . '</td>
                                                                     <td>' . $row['take_out_id'] . '</td>
-                                                                    <td>' . $row['take_out_id'] . '</td>
-                                                                    <td>' . $row['take_out_id'] . '</td>
+                                                                    <td>' . $row['return_admin'] . '</td>
+                                                                    <td>' . $row['user_name'] . '</td>
                                                                     <td>' . $row['shortfall'] . '</td>
                                                                     <td>' . $row['damaged']. '</td>
                                                                     <td>' . $row['description']. '</td>

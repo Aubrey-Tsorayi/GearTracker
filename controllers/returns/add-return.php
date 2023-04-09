@@ -1,8 +1,9 @@
 <?php
+session_start();
 require ("../../config/db-config.php");
 
 if (isset($_POST['submit'])){
-
+    
     // getting info from form
     $ref_code = $_POST['reference'];
     $name =$_POST['name'];
@@ -10,16 +11,17 @@ if (isset($_POST['submit'])){
     $quantity = $_POST['quantity'];
     $damaged = $_POST['damaged'];
     $description = $_POST['description'];
-    $current_date = date('Y-m-d');
+    $current_date = date('m-d');
+    $admin = $_SESSION['user_name'];
 
     // taking the previous quantity from the take_out table using ref_code
-    $previous_quantity = mysqli_query($conn,"SELECT `quantity` FROM `take_out` WHERE reference = '$ref_code'");
+    $previous_quantity = mysqli_query($conn,"SELECT `quantity` FROM `take_out` WHERE `take_out_id` = '$ref_code'");
     $previous_quantity = mysqli_fetch_row($previous_quantity)[0];
     // calculating the short fall = previous quantity - quantity 
     $shortfall = $previous_quantity - $quantity;
 
-    $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`) 
-    VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description')";
+    $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
+    VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
 
     $request = mysqli_query($conn, $query);
 

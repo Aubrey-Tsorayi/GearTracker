@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -79,14 +79,16 @@ require ("../../config/db-config.php");
                                                 $ref_code = mysqli_real_escape_string($conn, $_POST['reference']);
                                               
                                                 // Query database
-                                                $query = "SELECT `user_id`, `quantity` 
+                                                $query = "SELECT `take_out`.`user_id`, `take_out`.`quantity` , `users`.`user_name` 
                                                 FROM `take_out` 
-                                                WHERE `reference`='$ref_code'";
+                                                INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`
+                                                WHERE `take_out_id`='$ref_code'";
+
                                                 $result = mysqli_query($conn, $query);
                                               
                                                 if (mysqli_num_rows($result) > 0) {
                                                   $row = mysqli_fetch_assoc($result);
-                                                  $name = $row['user_id'];
+                                                  $name = $row['user_name'];
                                                   $quantity = $row['quantity'];
                                                 }
                                               }
@@ -105,7 +107,7 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>User </label>
                                             <input type="text" name="name" class="form-control"
-                                                placeholder="<?php echo $_SESSION['name']; ?>" readonly>
+                                                placeholder="<?php echo $_SESSION['user_name']; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
