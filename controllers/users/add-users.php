@@ -11,9 +11,17 @@ if (isset($_POST['submit'])){
     $sport = $_POST['sport'];
     $user_id = $_POST['id'];
     $passw = $_POST['password'];
+    $return = $_POST['return'];
 
-    $query = "INSERT INTO `users`(`user_id`, `user_name`, `email`, `phone_number`, `password`, `sport`) 
-    VALUES ('$user_id','$name','$email','$number','$passw','$sport')";
+    if ($return == "Yes"){
+        $accesss_level = 2;
+    }
+    else{
+        $accesss_level = 1;
+    }
+
+    $query = "INSERT INTO `users`(`user_id`, `user_name`, `email`, `phone_number`, `password`, `sport`, `level_access`) 
+    VALUES ('$user_id','$name','$email','$number','$passw','$sport', '$accesss_level')";
 
     $request = mysqli_query($conn, $query);
 

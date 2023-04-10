@@ -84,16 +84,45 @@ require ("../../config/db-config.php");
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>School Email *</label>
-                                            <input type="email" name="email" class="form-control"
-                                                placeholder="Enter Email" required>
+                                            <input type="email" id="email" name="email" class="form-control"
+                                                placeholder="Enter Email" onkeyup="check_email()" required>
+                                                <span id="validationResult"></span>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Sport *</label>
-                                            <input type="text" name="sport" class="form-control"
-                                                placeholder="Enter Sport" required>
+                                            <?php
+                                            $sql = "SELECT `sport`, `code` 
+                                            FROM `sports`";
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $sport_names = array();
+
+                                            // Loop through the query results and add the equipment names to the array
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            $sport_names[] = $row['sport'];
+                                            }
+                                            ?>
+                                            <select id="equipment" name="sport" class="selectpicker form-control"
+                                                data-style="py-0">
+                                                <?php foreach ($sport_names as $name): ?>
+                                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Return Admin</label>
+                                            <select name="return" class="selectpicker form-control"
+                                                data-style="py-0">
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</optio>
+                                            </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -135,31 +164,6 @@ require ("../../config/db-config.php");
     </div>
     </div>
     <!-- Wrapper End-->
-    <footer class="iq-footer">
-        <div class="container-fluid">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a href="../policies/privacy-policy.html">Privacy
-                                        Policy</a></li>
-                                <li class="list-inline-item"><a href="../policies/terms-of-service.html">Terms of
-                                        Use</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 text-right">
-                            <span class="mr-1">
-                                <script>
-                                document.write(new Date().getFullYear())
-                                </script>©
-                            </span> <a href="../dashboard/main-dash.php" class="">GearTracker</a>.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
     <script>
     var check = function() {
         if (document.getElementById('password').value ==
@@ -168,9 +172,24 @@ require ("../../config/db-config.php");
             document.getElementById('message').innerHTML = 'matching';
         } else {
             document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'not matching';
+            document.getElementById('message').innerHTML = 'Not matching';
         }
     }
+    </script>
+    <script>
+        var check_email = function(){
+            const email = document.querySelector('#email').value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(email)) {
+          if (email.endsWith('@africau.edu')) {
+            validationResult.textContent = 'Email is valid and ends with africau.edu';
+          } else {
+            validationResult.textContent = 'Email is valid but does not end with africau.edu';
+          }
+        } else {
+          validationResult.textContent = 'Email is not valid';
+        }
+        }
     </script>
     <!-- Backend Bundle JavaScript -->
     <?php
