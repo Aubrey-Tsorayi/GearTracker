@@ -72,7 +72,7 @@ require ("../../config/db-config.php");
                                             <?php
                                             $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
                                             FROM `equipment` 
-                                            WHERE `quantity` > 0";
+                                            WHERE `quantity_available` > 0";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);

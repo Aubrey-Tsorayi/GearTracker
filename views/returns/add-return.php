@@ -122,8 +122,8 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Damaged </label>
                                             <select name="damaged" class="selectpicker form-control" data-style="py-0">
-                                                <option value="N">No</option>
-                                                <option value="Y">Yes</option>
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</option>
                                             </select>
                                         </div>
                                     </div>
