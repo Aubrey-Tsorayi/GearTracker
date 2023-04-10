@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
     $sport = $_POST['sport'];
     $quantity = $_POST['quantity'];
     $current_date = date('Y-m-d');
+    $datetime = date('Y-m-d H:i:s');
     $user = $_SESSION['user_id'];
 
     //notification message
@@ -52,8 +53,8 @@ if (isset($_POST['submit'])) {
 
         if ($request) {
             $notification = mysqli_query($conn, "INSERT INTO `notifications`(`title`, `message`, `date`)
-            VALUES ('$title', '$message', '$current_date')");
-            require("../email/mailer.php");
+            VALUES ('$title', '$message', '$datetime')");
+            //require("../email/mailer.php");
             echo '<script> window.location.href="../../views/take_out/equipment-taken.php"; </script>';
         } else {
             echo '<script> alert("Take Out failed");
