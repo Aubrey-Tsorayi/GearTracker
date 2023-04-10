@@ -3,7 +3,6 @@ session_start();
 require("../../config/db-config.php");
 
 if (isset($_POST['name'])) {
-    session_start();
     // getting info from form
     $name = $_POST['name'];
     $code = $_POST['code'];
@@ -13,16 +12,16 @@ if (isset($_POST['name'])) {
 
     $code_names = array();
     $codes = mysqli_query($conn, "SELECT `equipment_code` FROM `equipment`");
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($codes)) {
         $code_names[] = $row['equipment_code'];
     }
 
-    if (in_array($code_to_update, $equipment_codes)) {
-        $quantiy_update = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` + '$quantity' WHERE `equipment_code` = '$code'");
+    if (in_array($code, $code_names)) {
+        $quantiy_update = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` + '$quantity', `quantity_available` = `quantity_available` + '$quantity' WHERE `equipment_code` = '$code'");
         if ($quantiy_update) {
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
         } else {
-            echo '<script> alert("Make sure details are correct.");
+            echo '<script> alert("Quantity unupdatable.");
             window.location.href = "../../views/equipment/add-equipment.php";
              </script>';
         }
