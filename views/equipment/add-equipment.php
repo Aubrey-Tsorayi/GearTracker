@@ -84,15 +84,25 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Sport *</label>
-                                            <select name="sport" class="selectpicker form-control" data-style="py-0">
-                                                <option value="Rugby">Rugby</option>
-                                                <option value="Soccer">Soccer</option>
-                                                <option value="Basketball">Basketball</option>
-                                                <option value="VolleyBall">VolleyBall</option>
-                                                <option value="Swimming">Swimming</option>
-                                                <option value="Cricket">Cricket</option>
-                                                <option value="Hockey">Hockey</option>
-                                                <option value="Tennis">Tennis</option>
+                                            <?php
+                                            $sql = "SELECT `sport`, `code` 
+                                            FROM `sports`";
+
+                                            //result
+                                            $result = mysqli_query($conn, $sql);
+
+                                            $sport_names = array();
+
+                                            // Loop through the query results and add the equipment names to the array
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            $sport_names[] = $row['sport'];
+                                            }
+                                            ?>
+                                            <select id="equipment" name="sport" class="selectpicker form-control"
+                                                data-style="py-0">
+                                                <?php foreach ($sport_names as $name): ?>
+                                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
