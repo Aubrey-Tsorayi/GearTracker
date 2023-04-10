@@ -58,8 +58,9 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `take_out_id`, `equipment_name`, `user_id`, `quantity`, `date`
-                                            FROM take_out";
+                                            $sql = "SELECT `take_out`.`take_out_id`, `take_out`.`equipment_name`, `take_out`.`user_id`, `take_out`.`quantity`, `take_out`.`date`, `users`.`user_name`
+                                            FROM `take_out`
+                                            INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -71,7 +72,7 @@ require ("../../config/db-config.php");
                                                         echo '
                                                                 <tr>
                                                                     <td>' . $row['take_out_id'] . '</td>
-                                                                    <td>' . $row['user_id'] . '</td>
+                                                                    <td>' . $row['user_name'] . '</td>
                                                                     <td>' . $row['equipment_name'] . '</td>
                                                                     <td>' . $row['quantity'] . '</td>
                                                                     <td>' . $row['date']. '</td>

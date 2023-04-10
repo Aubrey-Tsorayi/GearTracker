@@ -70,7 +70,7 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Name of Equipment *</label>
                                             <?php
-                                            $sql = "SELECT `equipment_name`, `quantity` 
+                                            $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
                                             FROM `equipment` 
                                             WHERE `quantity` > 0";
 
@@ -78,18 +78,21 @@ require ("../../config/db-config.php");
                                             $result = mysqli_query($conn, $sql);
 
                                             $equipment_names = array();
+                                            $equipment_codes = array();
 
                                             // Loop through the query results and add the equipment names to the array
                                             while ($row = mysqli_fetch_assoc($result)) {
                                             $equipment_names[] = $row['equipment_name'];
+                                            $equipment_codes[] = $row['equipment_code'];
                                             }
+                                            
+                                            echo '<select id="equipment" name="equipment" class="selectpicker form-control"
+                                                data-style="py-0">';
+                                                for($i=0; $i < count($equipment_names); $i++){
+                                                echo '<option value="' . $equipment_codes[$i]. '">' .$equipment_names[$i]. '</option>';
+                                                }
+                                            echo '</select>';
                                             ?>
-                                            <select id="equipment" name="equipment" class="selectpicker form-control"
-                                                data-style="py-0">
-                                                <?php foreach ($equipment_names as $name): ?>
-                                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -97,7 +100,7 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Sport *</label>
                                             <?php
-                                            $sql = "SELECT `sport`, `code` 
+                                            $sql = "SELECT `sport` 
                                             FROM `sports`";
 
                                             //result
@@ -121,8 +124,8 @@ require ("../../config/db-config.php");
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity *</label>
-                                            <input type="text" name="quantity" class="form-control" placeholder="Enter Number"
-                                                data-errors="Please Enter Code." required>
+                                            <input type="text" name="quantity" class="form-control"
+                                                placeholder="Enter Number" data-errors="Please Enter Code." required>
                                         </div>
                                     </div>
                                 </div>
