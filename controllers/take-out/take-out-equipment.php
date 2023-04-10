@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 
     // getting available quantity and updating it with the new available
     $available = mysqli_query($conn, "SELECT `quantity_available` FROM `equipment` WHERE `equipment_code` = '$sport'");
-    $available_quantity = mysqli_fetch_row($available)[0];
+    $available_quantity = mysqli_fetch_row($available);
 
     if ($available_quantity == 0) {
         echo '<script> alert("No available quantity");
