@@ -11,7 +11,7 @@ if (isset($_POST['submit'])){
     $quantity = $_POST['quantity'];
     $damaged = $_POST['damaged'];
     $description = $_POST['description'];
-    $current_date = date('m-d');
+    $current_date = date('Y-m-d');
     $admin = $_SESSION['user_name'];
 
     // taking the previous quantity from the take_out table using ref_code

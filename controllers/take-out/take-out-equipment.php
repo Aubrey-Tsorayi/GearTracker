@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $equipment = $_POST['equipment'];
     $sport = $_POST['sport'];
     $quantity = $_POST['quantity'];
-    $current_date = date('m-d');
+    $current_date = date('Y-m-d');
     $user = $_SESSION['user_id'];
 
     //notification message
