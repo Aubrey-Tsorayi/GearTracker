@@ -52,7 +52,8 @@ if (isset($_POST['submit'])) {
 
         if ($request) {
             $notification = mysqli_query($conn, "INSERT INTO `notifications`(`title`, `message`, `date`)
-        VALUES ('$title', '$message', '$current_date')");
+            VALUES ('$title', '$message', '$current_date')");
+            require("../email/mailer.php");
             echo '<script> window.location.href="../../views/take_out/equipment-taken.php"; </script>';
         } else {
             echo '<script> alert("Take Out failed");

@@ -20,6 +20,9 @@ if (isset($_POST['submit'])){
     // calculating the short fall = previous quantity - quantity 
     $shortfall = $previous_quantity - $quantity;
 
+    $new_avaliable = $previous_quantity + $quantity;
+    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$new_avaliable'");
+
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
     VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
 
