@@ -1,7 +1,8 @@
 <?php
-$to = $_SESSION['email'];
+session_start();
+$to = "godzit@africau.edu";
 $subject = "Takeout Order";
-$txt = "You have taken out ".$quantity." from the inventory.";
+$txt = "You have taken out 3 from the inventory.";
 $headers = "From: GearTracker" . "\r\n" .
 "CC: tsorayit@africa.edu";
 
