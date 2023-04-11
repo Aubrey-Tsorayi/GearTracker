@@ -138,7 +138,7 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Description (optional)</label>
                                             <input type="text" name="description" class="form-control"
-                                                placeholder="How is equipment damaged">
+                                                value="N/A">
                                         </div>
                                     </div>
                                 </div>

@@ -46,8 +46,11 @@ if (isset($_POST['submit'])) {
         // updating the new quantity in the equipment using code
         $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available`='$new_quantity' WHERE `equipment_code` = '$equipment'");
 
+        $equipment_query = mysqli_query($conn, "SELECT `equipment_name` FROM `equipment` WHERE `equipment_code` = '$equipment'");
+        $equipment_name = mysqli_fetch_row($equipment_query)[0];
+
         $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_id`, `date`, `quantity`)
-        VALUES ('$reference','$equipment', 'equipment_name', '$user','$current_date','$quantity')";
+        VALUES ('$reference','$equipment', '$equipment_name', '$user','$current_date','$quantity')";
 
         $request = mysqli_query($conn, $query);
 
