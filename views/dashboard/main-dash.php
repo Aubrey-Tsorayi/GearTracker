@@ -32,29 +32,6 @@ require ("../../config/db-config.php");
               ?>
         </div>
     </div>
-    <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="popup text-left">
-                        <h4 class="mb-3">New Order</h4>
-                        <div class="content create-workform bg-body">
-                            <div class="pb-3">
-                                <label class="mb-2">Email</label>
-                                <input type="text" class="form-control" placeholder="Enter Name or Email">
-                            </div>
-                            <div class="col-lg-12 mt-4">
-                                <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                    <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
-                                    <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="content-page">
         <div class="container-fluid">
             <div class="row">
@@ -103,14 +80,16 @@ require ("../../config/db-config.php");
                                         <div class="icon iq-icon-box-2 bg-info-light">
                                             <img src="../../assets/images/product/1.png" class="img-fluid" alt="image">
                                         </div>
+                                        <?php
+                                        $sql = "SELECT SUM(`quantity`) AS total FROM `equipment`";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+                                        $total = $row['total'];
+                                        ?>
                                         <div>
                                             <p class="mb-2">Total Equipment</p>
-                                            <h4>31.50</h4>
+                                            <h2><?php echo $total;?></h2>
                                         </div>
-                                    </div>
-                                    <div class="iq-progress-bar mt-2">
-                                        <span class="bg-info iq-progress progress-1" data-percent="85">
-                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -122,13 +101,19 @@ require ("../../config/db-config.php");
                                         <div class="icon iq-icon-box-2 bg-danger-light">
                                             <img src="../../assets/images/product/2.png" class="img-fluid" alt="image">
                                         </div>
+                                        <?php
+                                        $sql = "SELECT SUM(`quantity_available`) AS sum FROM `equipment` WHERE `quantity_available` > 0";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+                                        $sum = $row['sum'];
+                                        ?>
                                         <div>
                                             <p class="mb-2">Avaliable Equipment</p>
-                                            <h4>$ 4598</h4>
+                                            <h4><?php echo $sum;?></h4>
                                         </div>
                                     </div>
                                     <div class="iq-progress-bar mt-2">
-                                        <span class="bg-danger iq-progress progress-1" data-percent="70">
+                                        <span class="bg-danger iq-progress progress-1" data-percent="<?php echo ($sum/$total)*100;?>">
                                         </span>
                                     </div>
                                 </div>
@@ -141,13 +126,24 @@ require ("../../config/db-config.php");
                                         <div class="icon iq-icon-box-2 bg-success-light">
                                             <img src="../../assets/images/product/3.png" class="img-fluid" alt="image">
                                         </div>
+                                        <?php
+                                        $sql = "SELECT SUM(`shortfall`) AS short FROM `returns`";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+                                        $short = $row['short'];
+
+                                        $sql = "SELECT SUM(`quantity`) AS quantity FROM `take_out`";
+                                        $result = mysqli_query($conn, $sql);
+                                        $row = mysqli_fetch_assoc($result);
+                                        $quantity = $row['quantity'];
+                                        ?>
                                         <div>
                                             <p class="mb-2">Shortfall Equipment</p>
-                                            <h4>4589 M</h4>
+                                            <h4><?php echo $short;?></h4>
                                         </div>
                                     </div>
                                     <div class="iq-progress-bar mt-2">
-                                        <span class="bg-success iq-progress progress-1" data-percent="75">
+                                        <span class="bg-success iq-progress progress-1" data-percent="<?php echo ($short/$quantity)*100;?>">
                                         </span>
                                     </div>
                                 </div>
