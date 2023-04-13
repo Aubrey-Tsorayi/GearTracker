@@ -18,8 +18,8 @@ if (isset($_POST['submit'])) {
 
 
     // Generate the new reference code for take out ID
-    $result = mysqli_query($conn, 'SELECT COUNT(take_out_id) FROM take_out');
-    $max_ref_num = mysqli_fetch_row($result)[0];
+    $result = mysqli_query($conn, 'SELECT COUNT(`take_out_id`) FROM `take_out`');
+    $max_ref_num = mysqli_fetch_row($result)[0]; 
     if ($max_ref_num == 0) {
         $reference = 'TAKEOUT0';
     } else {
@@ -51,6 +51,7 @@ if (isset($_POST['submit'])) {
 
         $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_id`, `date`, `quantity`)
         VALUES ('$reference','$equipment', '$equipment_name', '$user','$current_date','$quantity')";
+
 
         $request = mysqli_query($conn, $query);
 
