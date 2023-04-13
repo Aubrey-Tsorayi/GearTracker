@@ -1,10 +1,8 @@
 <?php
-session_start();
-$to = "godzit@africau.edu";
+$to = "godzitanaka@gmail.com";
 $subject = "Takeout Order";
 $txt = "You have taken out 3 from the inventory.";
-$headers = "From: GearTracker" . "\r\n" .
-"CC: tsorayit@africa.edu";
+$headers = "From: GearTracker";
 
 mail($to,$subject,$txt,$headers);
 ?>

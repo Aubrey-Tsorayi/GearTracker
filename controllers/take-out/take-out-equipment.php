@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
         echo '<script> alert("Quantity requested is more than available");
         window.location.href = "../../views/take_out/take-out-equipment.php";
          </script>';
-    } else {
+    } else if ($quantity > 0){
         $new_quantity = $available_quantity - $quantity;
         // updating the new quantity in the equipment using code
         $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available`='$new_quantity' WHERE `equipment_code` = '$equipment'");
@@ -65,6 +65,10 @@ if (isset($_POST['submit'])) {
         window.location.href = "../../views/take_out/take-out-equipment.php";
          </script>';
         }
+    }else{
+        '<script> alert("Error");
+        window.location.href = "../../views/take_out/take-out-equipment.php";
+         </script>';
     }
 } else {
     echo '<script> alert("Database failed");
