@@ -11,7 +11,8 @@
           <div class="data-scrollbar" data-scroll="1">
               <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
-                      <li class="active">
+                    <?php if($_SESSION['access_level'] == '3'){
+                       echo '<li class="">
                           <a href="../dashboard/main-dash.php" class="svg-icon">
                               <svg class="svg-icon" id="p-dash1" width="20" height="20"
                                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -24,7 +25,9 @@
                               </svg>
                               <span class="ml-4">Dashboards</span>
                           </a>
-                      </li>
+                      </li>';
+                    }
+                      ?>
                       <li class=" ">
                           <a href="../equipment/list-equipment.php" class=" ">
                               <svg class="svg-icon" id="p-dash3" width="20" height="20"
@@ -47,7 +50,9 @@
                               <span class="ml-4">Take out</span>
                           </a>
                       </li>
-                      <li class=" ">
+                      <?php
+                      if($_SESSION['access_level'] == 3 || $_SESSION['access_level'] == 2){
+                      echo '<li class=" ">
                           <a href="../returns/list-returns.php" class=" ">
                               <svg class="svg-icon" id="p-dash6" width="20" height="20"
                                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -59,8 +64,11 @@
                               </svg>
                               <span class="ml-4">Returns</span>
                           </a>
-                      </li>
-                      <li class=" ">
+                      </li>';
+                      }
+                      ?>
+                      <?php if($_SESSION['access_level'] == '3'){
+                      echo '<li class=" ">
                           <a href="../users/list-users.php" class=" ">
                               <svg class="svg-icon" id="p-dash8" width="20" height="20"
                                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
@@ -72,7 +80,9 @@
                               </svg>
                               <span class="ml-4">Users</span>
                           </a>
-                      </li>
+                      </li>';
+                      }
+                      ?>
                   </ul>
               </nav>
           </div>

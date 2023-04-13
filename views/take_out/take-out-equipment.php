@@ -72,7 +72,7 @@ require ("../../config/db-config.php");
                                             <?php
                                             $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
                                             FROM `equipment` 
-                                            WHERE `quantity_available` > 0";
+                                            WHERE `quantity_available` > 0 && `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -101,7 +101,8 @@ require ("../../config/db-config.php");
                                             <label>Sport *</label>
                                             <?php
                                             $sql = "SELECT `sport` 
-                                            FROM `sports`";
+                                            FROM `sports`
+                                            WHERE `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -113,12 +114,10 @@ require ("../../config/db-config.php");
                                             $sport_names[] = $row['sport'];
                                             }
                                             ?>
-                                            <select id="equipment" name="sport" class="selectpicker form-control"
-                                                data-style="py-0">
                                                 <?php foreach ($sport_names as $name): ?>
-                                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                                                    <input type="text" id="equipment" name="sport" class="form-control"
+                                                data-style="py-0" value="<?php echo $name; ?>" readonly>
                                                 <?php endforeach; ?>
-                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -130,7 +129,6 @@ require ("../../config/db-config.php");
                                     </div>
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-primary mr-2">Take Equipment</button>
-                                <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>
                     </div>

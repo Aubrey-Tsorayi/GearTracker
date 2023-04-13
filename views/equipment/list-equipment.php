@@ -37,8 +37,12 @@ require ("../../config/db-config.php");
                             <div>
                                 <h4 class="mb-3">Equipment List</h4>
                             </div>
-                            <a href="add-equipment.php" class="btn btn-primary add-list"><i
-                                    class="las la-plus mr-3"></i>Add Equipment</a>
+                            <?php
+                            if($_SESSION['access_level'] == 3){
+                             echo '<a href="add-equipment.php" class="btn btn-primary add-list"><i
+                                    class="las la-plus mr-3"></i>Add Equipment</a>';
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="col-lg-12">
@@ -60,7 +64,8 @@ require ("../../config/db-config.php");
 
                                             
                                             $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
-                                            FROM equipment";
+                                            FROM equipment 
+                                            WHERE `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);

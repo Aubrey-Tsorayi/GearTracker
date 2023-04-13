@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <!-- Wrapper Start -->
@@ -60,7 +60,8 @@ require ("../../config/db-config.php");
                                             
                                             $sql = "SELECT `take_out`.`take_out_id`, `take_out`.`equipment_name`, `take_out`.`user_id`, `take_out`.`quantity`, `take_out`.`date`, `users`.`user_name`
                                             FROM `take_out`
-                                            INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`";
+                                            INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`
+                                            WHERE `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
