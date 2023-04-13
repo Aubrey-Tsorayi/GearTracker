@@ -61,9 +61,7 @@ require ("../../config/db-config.php");
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">Returns List</h4>
-                            <p class="mb-0">Returns dashboard shows the graphical representation of the channel
-                                and Reference <br>wise returns with the comparison to the total units sold..</p>
+                            <h4 class="mb-3">Returns</h4>
                         </div>
                         <a href="../returns/add-return.php" class="btn btn-primary add-list"><i
                                 class="las la-plus mr-3"></i>Add Returns</a>

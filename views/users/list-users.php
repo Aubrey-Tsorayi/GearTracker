@@ -58,10 +58,7 @@ require ("../../config/db-config.php");
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">User List</h4>
-                            <p class="mb-0">A dashboard provides you an overview of user list with access to the most
-                                important data,<br>
-                                functions and controls. </p>
+                            <h4 class="mb-3">Users</h4>
                         </div>
                         <a href="add-users.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add
                             User</a>
