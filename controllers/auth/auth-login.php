@@ -21,7 +21,7 @@ if(isset($_POST['user'])) {
         $_SESSION['access_level'] = $row['level_access'];
         $_SESSION['sport'] = $row['sport'];
 
-        if($row['level_acess'] != 3){
+        if($row['level_access'] != 3){
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
         }
         echo '<script> window.location.href="../../views/dashboard/main-dash.php"; </script>';
