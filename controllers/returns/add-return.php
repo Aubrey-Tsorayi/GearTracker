@@ -32,7 +32,7 @@ if (isset($_POST['submit'])){
         echo '<script> window.location.href="../../views/returns/list-returns.php"; </script>';
     }
     else{
-        echo '<script> alert("User registration failed.");
+        echo '<script> alert("Return failed.");
         window.location.href = "../views/returns/list-returns.php";
          </script>';
     }
