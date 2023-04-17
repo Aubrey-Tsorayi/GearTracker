@@ -1,9 +1,18 @@
       <div class="iq-sidebar  sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-              <a href="../dashboard/main-dash.php" class="header-logo">
+          <?php  
+          if($_SESSION['access_level'] == 3){
+              echo '<a href="../dashboard/main-dash.php" class="header-logo">
                   <img src="../../assets/images/favicon.png" class="img-fluid rounded-normal light-logo" alt="logo">
                   <h5 class="logo-title light-logo ml-3">GearTracker</h5>
-              </a>
+              </a>';
+          }else{
+            echo '<a href="../equipment/list-equipment.php" class="header-logo">
+                  <img src="../../assets/images/favicon.png" class="img-fluid rounded-normal light-logo" alt="logo">
+                  <h5 class="logo-title light-logo ml-3">GearTracker</h5>
+              </a>';
+          }
+          ?>
               <div class="iq-menu-bt-sidebar ml-0">
                   <i class="las la-bars wrapper-menu"></i>
               </div>
