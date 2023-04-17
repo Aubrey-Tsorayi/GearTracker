@@ -57,11 +57,17 @@ require ("../../config/db-config.php");
                                 <?php
                                             //fetch data from db
 
+                                            if ($_SESSION['access_level'] == 3){
+                                                $sql = "SELECT `take_out`.`take_out_id`, `take_out`.`equipment_name`, `take_out`.`user_id`, `take_out`.`quantity`, `take_out`.`date`, `users`.`user_name`
+                                                FROM `take_out`
+                                                INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`";
+                                            }else{
+                                                $sql = "SELECT `take_out`.`take_out_id`, `take_out`.`equipment_name`, `take_out`.`user_id`, `take_out`.`quantity`, `take_out`.`date`, `users`.`user_name`
+                                                FROM `take_out`
+                                                INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`
+                                                WHERE `sport` = '$_SESSION[sport]'";
+                                            }
                                             
-                                            $sql = "SELECT `take_out`.`take_out_id`, `take_out`.`equipment_name`, `take_out`.`user_id`, `take_out`.`quantity`, `take_out`.`date`, `users`.`user_name`
-                                            FROM `take_out`
-                                            INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`
-                                            WHERE `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);

@@ -62,10 +62,15 @@ require ("../../config/db-config.php");
                                     <?php
                                             //fetch data from db
 
+                                            if ($_SESSION['access_level'] == 3){
+                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
+                                                FROM equipment";
+                                            }else{
+                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
+                                                FROM equipment 
+                                                WHERE `sport` = '$_SESSION[sport]'";
+                                            }
                                             
-                                            $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
-                                            FROM equipment 
-                                            WHERE `sport` = '$_SESSION[sport]'";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
