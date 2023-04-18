@@ -42,7 +42,7 @@ require ("../../config/db-config.php");
                             </div>
                             <div class="col-lg-12 mt-4">
                                 <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                    <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
+                                    <div class="btn btn-danger mr-4" data-dismiss="modal">Cancel</div>
                                     <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@ require ("../../config/db-config.php");
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-primary mr-2">Add Returns</button>
+                                <button type="submit" name="submit" class="btn btn-danger mr-2">Add Returns</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>
                             </form>
                         </div>

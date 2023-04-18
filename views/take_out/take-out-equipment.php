@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -42,7 +42,7 @@ require ("../../config/db-config.php");
                             </div>
                             <div class="col-lg-12 mt-4">
                                 <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                    <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
+                                    <div class="btn btn-danger mr-4" data-dismiss="modal">Cancel</div>
                                     <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
                                 </div>
                             </div>
@@ -73,7 +73,8 @@ require ("../../config/db-config.php");
                                             if($_SESSION['access_level'] == 3){
                                                 $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
                                                 FROM `equipment` 
-                                                WHERE `quantity_available` > 0'";
+                                                WHERE `quantity_available` > 0";
+                                                
                                             }else{
                                                 $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
                                                 FROM `equipment` 
@@ -135,7 +136,7 @@ require ("../../config/db-config.php");
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-primary mr-2">Take Equipment</button>
+                                <button type="submit" name="submit" class="btn btn-danger mr-2">Take Equipment</button>
                             </form>
                         </div>
                     </div>
