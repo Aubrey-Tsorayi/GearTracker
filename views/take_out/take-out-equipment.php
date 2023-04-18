@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
@@ -27,29 +27,6 @@ require ("../../config/db-config.php");
             <?php
               require('../../includes/nav.php');
               ?>
-        </div>
-    </div>
-    <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="popup text-left">
-                        <h4 class="mb-3">New Order</h4>
-                        <div class="content create-workform bg-body">
-                            <div class="pb-3">
-                                <label class="mb-2">Email</label>
-                                <input type="text" class="form-control" placeholder="Enter Name or Email">
-                            </div>
-                            <div class="col-lg-12 mt-4">
-                                <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                    <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
-                                    <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="content-page">
@@ -70,10 +47,18 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Name of Equipment *</label>
                                             <?php
-                                            $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
-                                            FROM `equipment` 
-                                            WHERE `quantity_available` > 0 && `sport` = '$_SESSION[sport]'";
+                                            if($_SESSION['access_level'] == 3){
+                                                $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
+                                                FROM `equipment` 
+                                                WHERE `quantity_available` > 0";
+                                                
+                                            }else{
+                                                $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
+                                                FROM `equipment` 
+                                                WHERE `quantity_available` > 0 && `sport` = '$_SESSION[sport]'";
 
+                                            }
+                                            
                                             //result
                                             $result = mysqli_query($conn, $sql);
 
@@ -128,7 +113,7 @@ require ("../../config/db-config.php");
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" name="submit" class="btn btn-primary mr-2">Take Equipment</button>
+                                <button type="submit" name="submit" class="btn btn-danger mr-2">Take Equipment</button>
                             </form>
                         </div>
                     </div>

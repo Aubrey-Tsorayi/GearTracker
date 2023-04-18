@@ -526,7 +526,7 @@ Index Of Script
     const closestElem = $(this).attr("data-closest-elem");
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn btn-primary",
+        confirmButton: "btn btn-danger",
         cancelButton: "btn btn-outline-primary ml-2",
       },
       buttonsStyling: false,

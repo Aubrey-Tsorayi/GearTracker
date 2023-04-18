@@ -1,9 +1,18 @@
       <div class="iq-sidebar  sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
-              <a href="../dashboard/main-dash.php" class="header-logo">
+              <?php  
+          if($_SESSION['access_level'] == 3){
+              echo '<a href="../dashboard/main-dash.php" class="header-logo">
                   <img src="../../assets/images/favicon.png" class="img-fluid rounded-normal light-logo" alt="logo">
                   <h5 class="logo-title light-logo ml-3">GearTracker</h5>
-              </a>
+              </a>';
+          }else{
+            echo '<a href="../equipment/list-equipment.php" class="header-logo">
+                  <img src="../../assets/images/favicon.png" class="img-fluid rounded-normal light-logo" alt="logo">
+                  <h5 class="logo-title light-logo ml-3">GearTracker</h5>
+              </a>';
+          }
+          ?>
               <div class="iq-menu-bt-sidebar ml-0">
                   <i class="las la-bars wrapper-menu"></i>
               </div>
@@ -11,7 +20,7 @@
           <div class="data-scrollbar" data-scroll="1">
               <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
-                    <?php if($_SESSION['access_level'] == '3'){
+                      <?php if($_SESSION['access_level'] == '3'){
                        echo '<li class="">
                           <a href="../dashboard/main-dash.php" class="svg-icon">
                               <svg class="svg-icon" id="p-dash1" width="20" height="20"
@@ -30,11 +39,12 @@
                       ?>
                       <li class=" ">
                           <a href="../equipment/list-equipment.php" class=" ">
-                              <svg class="svg-icon" id="p-dash3" width="20" height="20"
+                              <svg class="svg-icon" id="p-dash2" width="20" height="20"
                                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                  <circle cx="9" cy="21" r="1"></circle>
+                                  <circle cx="20" cy="21" r="1"></circle>
+                                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                               </svg>
                               <span class="ml-4">Equipment</span>
                           </a>

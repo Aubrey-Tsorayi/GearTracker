@@ -42,7 +42,7 @@ require ("../../config/db-config.php");
                             </div>
                             <div class="col-lg-12 mt-4">
                                 <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                    <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
+                                    <div class="btn btn-danger mr-4" data-dismiss="modal">Cancel</div>
                                     <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@ require ("../../config/db-config.php");
                         <div>
                             <h4 class="mb-3">Users</h4>
                         </div>
-                        <a href="add-users.php" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add
+                        <a href="add-users.php" class="btn btn-danger add-list"><i class="las la-plus mr-3"></i>Add
                             User</a>
                     </div>
                 </div>
