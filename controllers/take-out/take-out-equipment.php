@@ -17,9 +17,6 @@ if (isset($_POST['submit'])) {
         window.location.href = "../../views/take_out/take-out-equipment.php";
          </script>';
     } else {
-        //notification message
-        $title = "Take Out";
-        $message = "You have taken out $quantity $equipment";
 
 
         // Generate the new reference code for take out ID
@@ -61,6 +58,10 @@ if (isset($_POST['submit'])) {
             $request = mysqli_query($conn, $query);
 
             if ($request) {
+                //notification message
+                $title = "Take Out";
+                $message = $_SESSION['user_name'] . " have taken out $quantity $equipment_name";
+
                 $notification = mysqli_query($conn, "INSERT INTO `notifications`(`title`, `message`, `date`)
             VALUES ('$title', '$message', '$datetime')");
                 //require("../email/mailer.php");
