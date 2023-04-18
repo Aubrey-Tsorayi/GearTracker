@@ -26,6 +26,8 @@ if (isset($_POST['submit'])){
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
     VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
 
+    $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall'");
+
     $request = mysqli_query($conn, $query);
 
     if($request){

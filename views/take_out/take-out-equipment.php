@@ -123,7 +123,6 @@ require ("../../config/db-config.php");
         </div>
     </div>
     </div>
-    <!-- Wrapper End-->
     <!-- Backend Bundle JavaScript -->
     <?php
     require("../../includes/scripts.php");
