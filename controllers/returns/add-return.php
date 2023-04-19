@@ -23,8 +23,8 @@ if (isset($_POST['submit'])){
     $shortfall = $previous_quantity - $quantity;
 
     // calculating new availabe and updating the equipment table
-    $new_avaliable = $previous_quantity + $quantity;
-    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$new_avaliable' WHERE `equipment_name` = '$equipment_name'");
+    //$new_avaliable = $previous_quantity + $quantity;
+    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$previous_quantity' + '$quantity' WHERE `equipment_name` = '$equipment_name'");
 
     // insert into the returns table
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
