@@ -117,7 +117,7 @@ require ("../../config/db-config.php");
                     </div>
                 </div>
                 <?php
-                if($_SESSION['level_access'] == 3){
+                if($_SESSION['access_level'] == 3){
                     echo '<div class="col-lg-12">
                     <!-- add button to print table -->
                     <button class="btn btn-danger add-list" onclick="printTable()"><i
