@@ -13,6 +13,7 @@ if (isset($_POST['submit'])){
     $description = $_POST['description'];
     $current_date = date('Y-m-d');
     $admin = $_SESSION['user_name'];
+    $equipment_name = $_POST['equipment_name'];
 
     // taking the previous quantity from the take_out table using ref_code
     $previous_quantity = mysqli_query($conn,"SELECT `quantity` FROM `take_out` WHERE `take_out_id` = '$ref_code'");
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])){
 
     // calculating new availabe and updating the equipment table
     $new_avaliable = $previous_quantity + $quantity;
-    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$new_avaliable'");
+    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$new_avaliable' WHERE `equipment_name` = '$equipment_name'");
 
     // insert into the returns table
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 

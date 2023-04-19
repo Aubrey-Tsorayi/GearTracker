@@ -79,7 +79,7 @@ require ("../../config/db-config.php");
                                                 $ref_code = mysqli_real_escape_string($conn, $_POST['reference']);
                                               
                                                 // Query database
-                                                $query = "SELECT `take_out`.`user_id`, `take_out`.`quantity` , `users`.`user_name` 
+                                                $query = "SELECT `take_out`.`user_id`, `take_out`.`quantity` , `take_out`.`equipment_name`, `users`.`user_name` 
                                                 FROM `take_out` 
                                                 INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`
                                                 WHERE `take_out_id`='$ref_code'";
@@ -90,6 +90,7 @@ require ("../../config/db-config.php");
                                                   $row = mysqli_fetch_assoc($result);
                                                   $name = $row['user_name'];
                                                   $quantity = $row['quantity'];
+                                                  $equipment_name = $row['equipment_name'];
                                                 }
                                               }
                                               
@@ -132,6 +133,7 @@ require ("../../config/db-config.php");
                                             <label>Quantity</label>
                                             <input type="text" name="quantity" class="form-control"
                                                 placeholder="<?php echo $quantity?>">
+                                            <input type="text" value="<?php echo $equipment_name?>" name="equipment_name" hidden>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
