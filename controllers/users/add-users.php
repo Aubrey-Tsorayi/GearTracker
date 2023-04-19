@@ -13,6 +13,20 @@ if (isset($_POST['submit'])){
     $passw = $_POST['password'];
     $return = $_POST['return'];
 
+    // checking if email address is already in the database
+    $emails = mysqli_query($conn, "SELECT `email` FROM `users`");
+    $email_names = array();
+    while ($row = mysqli_fetch_assoc($emails)){
+        $email_names[] = $row['email'];
+    }
+    
+    if(in_array($email, $email_names)){
+        echo '<script> alert("Email already exists");
+        window.location.href = "../../views/users/add-users.php";
+         </script>';
+        exit();
+    }
+
     // checking if user is a return manager
     if ($return == "Yes"){
         $accesss_level = 2;
