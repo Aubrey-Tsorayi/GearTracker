@@ -10,10 +10,10 @@ require ("../../config/db-config.php");
 
 <body class="  ">
     <!-- loader Start -->
-    <div id="loading">
+    <!-- <div id="loading">
         <div id="loading-center">
         </div>
-    </div>
+    </div> -->
     <!-- loader END -->
     <!-- Wrapper Start -->
     <!-- Wrapper Start -->
@@ -55,7 +55,6 @@ require ("../../config/db-config.php");
                                         <th>Sport</th>
                                         <th>Quantity</th>
                                         <th>Quantity Available</th>
-                                        <th>Description</th>
                                     </tr>
                                 </thead>
                                 <tbody class="ligth-body">
@@ -63,10 +62,10 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             if ($_SESSION['access_level'] == 3){
-                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
+                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`
                                                 FROM equipment";
                                             }else{
-                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`
+                                                $sql = "SELECT `equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`
                                                 FROM equipment 
                                                 WHERE `sport` = '$_SESSION[sport]'";
                                             }
@@ -86,7 +85,6 @@ require ("../../config/db-config.php");
                                                                     <td>' . $row['sport'] . '</td>
                                                                     <td>' . $row['quantity'] . '</td>
                                                                     <td>' . $row['quantity_available']. '</td>
-                                                                    <td>' . $row['description']. '</td>
                                                                 </tr>';
                         }
                     }
