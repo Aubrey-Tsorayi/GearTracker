@@ -90,12 +90,6 @@ require ("../../config/db-config.php");
                                                 placeholder="Enter Quantity" data-errors="Please Enter Code." required>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label> Equipment Description</label>
-                                            <input type="text" name="description" class="form-control" placeholder="Description">
-                                        </div>
-                                    </div>
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-danger mr-2">Add Equipment</button>
                                 <button type="reset" class="btn btn-warning">Reset</button>

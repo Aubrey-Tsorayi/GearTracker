@@ -8,7 +8,6 @@ if (isset($_POST['name'])) {
     $code = $_POST['code'];
     $sport = $_POST['sport'];
     $quantity = $_POST['equipment'];
-    $description = $_POST['description'];
 
     // getting equipment codes from database and storing in an array
     $code_names = array();
@@ -32,8 +31,8 @@ if (isset($_POST['name'])) {
         }
     } else {
         // inserting into equipment table
-        $query = "INSERT INTO `equipment`(`equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`) 
-        VALUES ('$code','$name','$sport','$quantity','$quantity','$description')";
+        $query = "INSERT INTO `equipment`(`equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`) 
+        VALUES ('$code','$name','$sport','$quantity','$quantity')";
 
         // running query
         $request = mysqli_query($conn, $query);
