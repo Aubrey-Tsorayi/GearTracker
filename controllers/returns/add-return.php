@@ -19,12 +19,18 @@ if (isset($_POST['submit'])){
     $previous_quantity = mysqli_query($conn,"SELECT `quantity` FROM `take_out` WHERE `take_out_id` = '$ref_code'");
     $previous_quantity = mysqli_fetch_row($previous_quantity)[0];
 
+    // checking if the quantity returned is more than the quantity taken out
+    if ($previous_quantity < $quantity){
+        echo '<script> alert("Quantity returned is more than the quantity taken out");
+        window.location.href = "../../views/returns/add-return.php";
+         </script>';
+    }
     // calculating the short fall = previous quantity - quantity 
     $shortfall = $previous_quantity - $quantity;
 
     // calculating new availabe and updating the equipment table
-    //$new_avaliable = $previous_quantity + $quantity;
-    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$previous_quantity' + '$quantity' WHERE `equipment_name` = '$equipment_name'");
+    $new_avaliable = $previous_quantity + $quantity;
+    $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = `quantity_available`  + '$quantity' WHERE `equipment_name` = '$equipment_name'");
 
     // insert into the returns table
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
