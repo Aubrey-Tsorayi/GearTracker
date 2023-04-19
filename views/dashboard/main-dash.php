@@ -42,35 +42,6 @@ require ("../../config/db-config.php");
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-lg-4">
-                <div class="table-responsive mb-3">
-                        <table class="data-table table mb-0 ">
-                            <thead class="bg-white text-uppercase">
-                                <tr class="ligth ligth-data">
-                                    <th>Title</th>
-                                    <th>Message</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody class="light-body">
-                            <?php 
-                                    $sql = "SELECT `date`, `title`, `message` FROM `notifications` ORDER BY date DESC LIMIT 3";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    // output data of each row
-                                    while($row = mysqli_fetch_assoc($result)) {
-                                        echo '
-                                        <tr>
-                                            <td>' . $row['title'] . '</td>
-                                            <td>' . $row['message'] . '</td>
-                                            <td>' . $row['date'] . '</td>
-                                        </tr>';
-                                    }
-                                    ?>
-                            </tbody>
-                        </table>
-                </div>
-                </div> -->
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
@@ -151,7 +122,7 @@ require ("../../config/db-config.php");
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="card card-block card-stretch card-height">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
@@ -314,7 +285,7 @@ require ("../../config/db-config.php");
                             <div id="layout1-chart-5"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- Page end  -->
         </div>
