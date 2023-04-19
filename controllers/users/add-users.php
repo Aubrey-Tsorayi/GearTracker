@@ -20,8 +20,11 @@ if (isset($_POST['submit'])){
         $accesss_level = 1;
     }
 
+    // encryting password
+    $en_passw = password_hash($passw, PASSWORD_DEFAULT);
+
     $query = "INSERT INTO `users`(`user_id`, `user_name`, `email`, `phone_number`, `password`, `sport`, `level_access`) 
-    VALUES ('$user_id','$name','$email','$number','$passw','$sport', '$accesss_level')";
+    VALUES ('$user_id','$name','$email','$number','$en_passw','$sport', '$accesss_level')";
 
     $request = mysqli_query($conn, $query);
 

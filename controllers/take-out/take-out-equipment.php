@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
             if ($request) {
                 //notification message
                 $title = "Take Out";
-                $message = $_SESSION['user_name'] . " have taken out $quantity $equipment_name";
+                $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name";
 
                 $notification = mysqli_query($conn, "INSERT INTO `notifications`(`title`, `message`, `date`)
             VALUES ('$title', '$message', '$datetime')");

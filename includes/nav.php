@@ -35,24 +35,24 @@
                                     </div>
                                 </div>
                                 <div class="px-3 pt-0 pb-0 sub-card">
-                                    <div class="media align-items-center cust-card py-3 border-bottom">
                                     <?php 
-                                    $sql = "SELECT `date`, `title`, `message` FROM `notifications` ORDER BY date DESC LIMIT 3";
+                                    $sql = "SELECT `date`, `title`, `message` FROM `notifications` ORDER BY date DESC LIMIT 5";
                                     $result = mysqli_query($conn, $sql);
 
                                     // output data of each row
                                     while($row = mysqli_fetch_assoc($result)) {
                                     echo '
+                                    <div class="media align-items-center cust-card py-3 border-bottom">
                                         <div class="media-body ml-3">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="mb-0">'. $row["title"].'</h6>
                                                 <small class="text-dark"><b>'. $row["date"].'</b></small>
                                             </div>
                                             <small class="mb-0">'. $row["message"].'</small>
+                                        </div>
                                         </div>';
                                     }
                                     ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>

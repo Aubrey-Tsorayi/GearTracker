@@ -47,17 +47,11 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Name of Equipment *</label>
                                             <?php
-                                            if($_SESSION['access_level'] == 3){
-                                                $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
-                                                FROM `equipment` 
-                                                WHERE `quantity_available` > 0";
-                                                
-                                            }else{
-                                                $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
-                                                FROM `equipment` 
-                                                WHERE `quantity_available` > 0 && `sport` = '$_SESSION[sport]'";
 
-                                            }
+                                            $sql = "SELECT `equipment_name`, `quantity`, `equipment_code` 
+                                            FROM `equipment` 
+                                            WHERE `quantity_available` > 0 && `sport` = '$_SESSION[sport]'";
+
                                             
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -99,10 +93,10 @@ require ("../../config/db-config.php");
                                             $sport_names[] = $row['sport'];
                                             }
                                             ?>
-                                                <?php foreach ($sport_names as $name): ?>
-                                                    <input type="text" id="equipment" name="sport" class="form-control"
+                                            <?php foreach ($sport_names as $name): ?>
+                                            <input type="text" id="equipment" name="sport" class="form-control"
                                                 data-style="py-0" value="<?php echo $name; ?>" readonly>
-                                                <?php endforeach; ?>
+                                            <?php endforeach; ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

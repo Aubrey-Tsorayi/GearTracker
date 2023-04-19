@@ -32,7 +32,11 @@ require ("../../config/db-config.php");
         <div class="content-page">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <?php
+                    if($_SESSION['access_level'] == 3){
+
+                    }else{
+                        echo '<div class="col-lg-12">
                         <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
                             <div>
                                 <h4 class="mb-3">Take Outs</h4>
@@ -40,7 +44,9 @@ require ("../../config/db-config.php");
                             <a href="take-out-equipment.php" class="btn btn-danger add-list"><i
                                     class="las la-plus mr-3"></i>Take out</a>
                         </div>
-                    </div>
+                    </div>';
+                    }
+                    ?>
                     <div class="col-lg-12">
                         <div class="table-responsive rounded mb-3">
                             <table class="data-table table mb-0 tbl-server-info">
