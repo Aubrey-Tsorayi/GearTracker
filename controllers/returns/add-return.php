@@ -17,15 +17,19 @@ if (isset($_POST['submit'])){
     // taking the previous quantity from the take_out table using ref_code
     $previous_quantity = mysqli_query($conn,"SELECT `quantity` FROM `take_out` WHERE `take_out_id` = '$ref_code'");
     $previous_quantity = mysqli_fetch_row($previous_quantity)[0];
+
     // calculating the short fall = previous quantity - quantity 
     $shortfall = $previous_quantity - $quantity;
 
+    // calculating new availabe and updating the equipment table
     $new_avaliable = $previous_quantity + $quantity;
     $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = '$new_avaliable'");
 
+    // insert into the returns table
     $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
     VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
 
+    // updating the quantity in the equipment table, remove the short fall from total quantity
     $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall'");
 
     $request = mysqli_query($conn, $query);

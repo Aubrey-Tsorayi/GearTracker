@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
     $datetime = date('Y-m-d H:i:s');
     $user = $_SESSION['user_id'];
 
+    // checking if giving quanity is above zero
     if ($quantity == 0) {
         echo '<script> alert("Quantity cannot be 0");
         window.location.href = "../../views/take_out/take-out-equipment.php";
@@ -31,7 +32,7 @@ if (isset($_POST['submit'])) {
         }
 
 
-        // getting available quantity and updating it with the new available
+        // getting available quantity
         $available = mysqli_query($conn, "SELECT `quantity_available` FROM `equipment` WHERE `equipment_code` = '$equipment'");
         $available_quantity = mysqli_fetch_row($available)[0];
 
@@ -45,26 +46,34 @@ if (isset($_POST['submit'])) {
          </script>';
         } else if ($quantity > 0) {
             $new_quantity = $available_quantity - $quantity;
-            // updating the new quantity in the equipment using code
+
+            // updating the new quantity in the equipment 
             $update = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available`='$new_quantity' WHERE `equipment_code` = '$equipment'");
 
+            // getting equipment name
             $equipment_query = mysqli_query($conn, "SELECT `equipment_name` FROM `equipment` WHERE `equipment_code` = '$equipment'");
             $equipment_name = mysqli_fetch_row($equipment_query)[0];
 
+            // inserting into take out table
             $query = "INSERT INTO `take_out`(`take_out_id`, `equipment_code`, `equipment_name`, `user_id`, `date`, `quantity`)
-        VALUES ('$reference','$equipment', '$equipment_name', '$user','$current_date','$quantity')";
+            VALUES ('$reference','$equipment', '$equipment_name', '$user','$current_date','$quantity')";
 
-
+            // running query
             $request = mysqli_query($conn, $query);
 
-            if ($request) {
+            if ($request) { // checking if the query is a success
+
                 //notification message
                 $title = "Take Out";
                 $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name";
 
+                // inserting into notification table
                 $notification = mysqli_query($conn, "INSERT INTO `notifications`(`title`, `message`, `date`)
-            VALUES ('$title', '$message', '$datetime')");
+                VALUES ('$title', '$message', '$datetime')");
+
+                // sending email
                 //require("../email/mailer.php");
+                
                 echo '<script> window.location.href="../../views/take_out/equipment-taken.php"; </script>';
             } else {
                 echo '<script> alert("Take Out failed");

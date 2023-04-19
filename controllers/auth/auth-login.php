@@ -14,12 +14,14 @@ if (isset($_POST['user'])) {
     $row = mysqli_fetch_assoc($result);
     $hash = $row['password'];
 
+    // verify password
     if (password_verify($passw, $hash)) {
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['access_level'] = $row['level_access'];
         $_SESSION['sport'] = $row['sport'];
 
+        // redirect to dashboard
         if ($row['level_access'] != 3) {
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
         }

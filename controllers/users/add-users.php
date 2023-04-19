@@ -13,6 +13,7 @@ if (isset($_POST['submit'])){
     $passw = $_POST['password'];
     $return = $_POST['return'];
 
+    // checking if user is a return manager
     if ($return == "Yes"){
         $accesss_level = 2;
     }
@@ -23,12 +24,15 @@ if (isset($_POST['submit'])){
     // encryting password
     $en_passw = password_hash($passw, PASSWORD_DEFAULT);
 
+    // inserting into database
     $query = "INSERT INTO `users`(`user_id`, `user_name`, `email`, `phone_number`, `password`, `sport`, `level_access`) 
     VALUES ('$user_id','$name','$email','$number','$en_passw','$sport', '$accesss_level')";
 
+    // running query
     $request = mysqli_query($conn, $query);
 
-    if($request){
+    // checking if query was successfull
+    if($request){ 
         echo '<script> window.location.href="../../views/users/list-users.php"; </script>';
     }
     else{

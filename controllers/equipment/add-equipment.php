@@ -10,13 +10,18 @@ if (isset($_POST['name'])) {
     $quantity = $_POST['equipment'];
     $description = $_POST['description'];
 
+    // getting equipment codes from database and storing in an array
     $code_names = array();
+
     $codes = mysqli_query($conn, "SELECT `equipment_code` FROM `equipment`");
     while ($row = mysqli_fetch_assoc($codes)) {
         $code_names[] = $row['equipment_code'];
     }
 
+    // checking if code exisit in the database
     if (in_array($code, $code_names)) {
+        
+        // updating the quantity of the existing code
         $quantiy_update = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` + '$quantity', `quantity_available` = `quantity_available` + '$quantity' WHERE `equipment_code` = '$code'");
         if ($quantiy_update) {
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
@@ -26,9 +31,11 @@ if (isset($_POST['name'])) {
              </script>';
         }
     } else {
+        // inserting into equipment table
         $query = "INSERT INTO `equipment`(`equipment_code`, `equipment_name`, `sport`, `quantity`, `quantity_available`, `description`) 
         VALUES ('$code','$name','$sport','$quantity','$quantity','$description')";
 
+        // running query
         $request = mysqli_query($conn, $query);
 
         if ($request) {
