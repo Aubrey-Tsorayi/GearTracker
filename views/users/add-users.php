@@ -128,7 +128,7 @@ require ("../../config/db-config.php");
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Student ID *</label>
+                                            <label>User ID *</label>
                                             <input type="text" name="id" class="form-control"
                                                 placeholder="Enter User Name" required>
                                             <div class="help-block with-errors"></div>
