@@ -77,7 +77,7 @@ require ("../../config/db-config.php");
                                         <div class="form-group">
                                             <label>Phone Number *</label>
                                             <input type="text" name="number" class="form-control"
-                                                placeholder="Enter Phone No" required>
+                                                placeholder="Enter Phone No" pattern="[07][0-9]{9}" required>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
