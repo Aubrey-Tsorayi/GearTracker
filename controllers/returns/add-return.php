@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
     VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
 
         // updating the quantity in the equipment table, remove the short fall from total quantity
-        $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall', `quantity_available` = `quantity_available` - '$shortfall' WHERE `equipment_name` = '$equipment_name'");
+        $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall' WHERE `equipment_name` = '$equipment_name'");
 
         $request = mysqli_query($conn, $query);
 
