@@ -49,7 +49,7 @@ require ("../../config/db-config.php");
                     ?>
                     <div class="col-lg-12">
                         <div class="table-responsive rounded mb-3">
-                            <table class="data-table table mb-0 tbl-server-info">
+                            <table class="data-table table mb-0 tbl-server-info" id="table">
                                 <thead class="bg-white text-uppercase">
                                     <tr class="ligth ligth-data">
                                         <th>Take Out ID</th>
@@ -60,7 +60,7 @@ require ("../../config/db-config.php");
                                     </tr>
                                 </thead>
                                 <tbody class="ligth-body">
-                                <?php
+                                    <?php
                                             //fetch data from db
 
                                             if ($_SESSION['access_level'] == 3){
@@ -98,6 +98,15 @@ require ("../../config/db-config.php");
                             </table>
                         </div>
                     </div>
+                    <?php
+                if($_SESSION['level_access'] == 3){
+                    echo '<div class="col-lg-12">
+                    <!-- add button to print table -->
+                    <button class="btn btn-danger add-list" onclick="printTable()"><i
+                            class="las la-plus mr-3"></i>Print</button>
+                </div>';
+                }
+                ?>
                 </div>
                 <!-- Page end  -->
             </div>
@@ -106,6 +115,15 @@ require ("../../config/db-config.php");
     <!-- Wrapper End-->
 
     <!-- Backend Bundle JavaScript -->
+    <script>
+    function printTable() {
+        var table = document.getElementById('table');
+        var win = window.open('', '', 'height=700,width=700');
+        win.document.write(table.outerHTML);
+        win.document.close();
+        win.print();
+    }
+    </script>
     <?php
     require("../../includes/scripts.php");
     ?>

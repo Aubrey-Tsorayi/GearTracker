@@ -84,7 +84,8 @@ require ("../../config/db-config.php");
                                         </div>
                                     </div>
                                     <div class="iq-progress-bar mt-2">
-                                        <span class="bg-danger iq-progress progress-1" data-percent="<?php echo ($sum/$total)*100;?>">
+                                        <span class="bg-danger iq-progress progress-1"
+                                            data-percent="<?php echo ($sum/$total)*100;?>">
                                         </span>
                                     </div>
                                 </div>
@@ -114,7 +115,8 @@ require ("../../config/db-config.php");
                                         </div>
                                     </div>
                                     <div class="iq-progress-bar mt-2">
-                                        <span class="bg-success iq-progress progress-1" data-percent="<?php echo ($short/$quantity)*100;?>">
+                                        <span class="bg-success iq-progress progress-1"
+                                            data-percent="<?php echo ($short/$quantity)*100;?>">
                                         </span>
                                     </div>
                                 </div>
@@ -132,7 +134,38 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="layout1-chart1"></div>
+                            <?php
+                            $sql = "SELECT * FROM `take_out`";
+                            $result = mysqli_query($conn, $sql);
+                            $data = array();
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $data[] = array(
+                                    'x' => $row['date'],
+                                    'y' => $row['quantity']
+                                );
+
+                            }
+                            $data = json_encode($data);
+                            ?>
+                            <div id="layout1-chart12"></div>
+                            <script>
+                            var options = {
+                                chart: {
+                                    type: 'area',
+                                    height: 350
+                                },
+                                series: [{
+                                    data: <?php echo $data; ?>
+                                }],
+                                xaxis: {
+                                    type: 'datetime'
+                                }
+                            };
+
+                            var chart = new ApexCharts(document.querySelector("#layout1-chart12"), options);
+                            chart.render();
+                            </script>
                         </div>
                     </div>
                 </div>
