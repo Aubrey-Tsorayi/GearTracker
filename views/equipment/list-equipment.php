@@ -102,6 +102,9 @@ require ("../../config/db-config.php");
                             class="las la-plus mr-3"></i>Print</button>
                 </div>';
                 }
+                else{
+                    
+                }
                 ?>
                 </div>
             </div>

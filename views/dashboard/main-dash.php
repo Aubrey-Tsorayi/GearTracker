@@ -175,20 +175,6 @@ require ("../../config/db-config.php");
                             <div class="header-title">
                                 <h4 class="card-title">Total Equipment vs Avaliable Equipment</h4>
                             </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton002">
-                                        <a class="dropdown-item" href="#">Yearly</a>
-                                        <a class="dropdown-item" href="#">Monthly</a>
-                                        <a class="dropdown-item" href="#">Weekly</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body">
                             <div id="layout1-chart-2" style="min-height: 360px;"></div>
@@ -204,18 +190,6 @@ require ("../../config/db-config.php");
                                     <h5>$ 98,7800 K</h5>
                                 </div>
                                 <div class="card-header-toolbar d-flex align-items-center">
-                                    <div class="dropdown">
-                                        <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton003"
-                                            data-toggle="dropdown">
-                                            This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                        </span>
-                                        <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                            aria-labelledby="dropdownMenuButton003">
-                                            <a class="dropdown-item" href="#">Year</a>
-                                            <a class="dropdown-item" href="#">Month</a>
-                                            <a class="dropdown-item" href="#">Week</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div id="layout1-chart-3" class="layout-chart-1"></div>
@@ -229,18 +203,6 @@ require ("../../config/db-config.php");
                                     <h5>$ 45,8956 K</h5>
                                 </div>
                                 <div class="card-header-toolbar d-flex align-items-center">
-                                    <div class="dropdown">
-                                        <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton004"
-                                            data-toggle="dropdown">
-                                            This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                        </span>
-                                        <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                            aria-labelledby="dropdownMenuButton004">
-                                            <a class="dropdown-item" href="#">Year</a>
-                                            <a class="dropdown-item" href="#">Month</a>
-                                            <a class="dropdown-item" href="#">Week</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div id="layout1-chart-4" class="layout-chart-2"></div>
@@ -254,18 +216,6 @@ require ("../../config/db-config.php");
                                 <h4 class="card-title">Order Summary</h4>
                             </div>
                             <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton005"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton005">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="card-body pb-2">

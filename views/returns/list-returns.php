@@ -123,6 +123,8 @@ require ("../../config/db-config.php");
                     <button class="btn btn-danger add-list" onclick="printTable()"><i
                             class="las la-plus mr-3"></i>Print</button>
                 </div>';
+                }else{
+                    
                 }
                 ?>
             </div>
