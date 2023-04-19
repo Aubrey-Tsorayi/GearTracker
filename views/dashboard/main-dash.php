@@ -177,7 +177,112 @@ require ("../../config/db-config.php");
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="layout1-chart-2" style="min-height: 360px;"></div>
+                            <?php
+                                $sql2 = "SELECT `quantity`, `quantity_available`, `equipment_name` FROM `equipment`";
+                                $result2 = mysqli_query($conn, $sql2);
+                                $data2 = array();
+
+                                if ($result2->num_rows > 0) {
+                                    while ($row = $result2->fetch_assoc()) {
+                                        $data2[] = array(
+                                            "quantity" => $row["quantity"],
+                                            "quantity_available" => $row["quantity_available"],
+                                            "equipment_name" => $row["equipment_name"]
+                                        );
+                                    }
+                                }
+                                $data_json2 = json_encode($data2);
+                            ?>
+                            <div id="layout1-chart-21"></div>
+                            <script>
+                            var options = {
+                                series: [{
+                                        name: "Quantity",
+                                        data: <?php echo $data_json2; ?>.map(item => item.quantity)
+                                    },
+                                    {
+                                        name: "Quantity Available",
+                                        data: <?php echo $data_json2; ?>.map(item => item.quantity_available)
+                                    }
+                                ],
+                                chart: {
+                                    height: 350,
+                                    type: "bar",
+                                    stacked: false
+                                },
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                stroke: {
+                                    width: [2, 2],
+                                    curve: "smooth"
+                                },
+                                xaxis: {
+                                    categories: <?php echo $data_json2; ?>.map(item => item.equipment_name),
+                                },
+                                yaxis: [{
+                                        axisTicks: {
+                                            show: true,
+                                        },
+                                        axisBorder: {
+                                            show: true,
+                                            color: "#008FFB"
+                                        },
+                                        labels: {
+                                            style: {
+                                                colors: "#008FFB"
+                                            }
+                                        },
+                                        title: {
+                                            text: "Quantity",
+                                            style: {
+                                                color: "#008FFB"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        opposite: true,
+                                        axisTicks: {
+                                            show: true,
+                                        },
+                                        axisBorder: {
+                                            show: true,
+                                            color: "#00E396"
+                                        },
+                                        labels: {
+                                            style: {
+                                                colors: "#00E396"
+                                            }
+                                        },
+                                        title: {
+                                            text: "Quantity Available",
+                                            style: {
+                                                color: "#00E396"
+                                            }
+                                        }
+                                    }
+                                ],
+                                tooltip: {
+                                    shared: true,
+                                    intersect: false,
+                                    y: {
+                                        formatter: function(y) {
+                                            if (typeof y !== "undefined") {
+                                                return y.toFixed(0) + " units";
+                                            }
+                                            return y;
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    horizontalAlign: "left",
+                                    offsetX: 40
+                                }
+                            };
+
+                            var chart = new ApexCharts(document.querySelector("#layout1-chart-21"), options);
+                            chart.render();
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -186,26 +291,104 @@ require ("../../config/db-config.php");
                         <div class="card-body">
                             <div class="d-flex align-items-top justify-content-between">
                                 <div class="">
-                                    <p class="mb-0">Income</p>
-                                    <h5>$ 98,7800 K</h5>
+                                    <h5>Shortfalls</h5>
                                 </div>
                                 <div class="card-header-toolbar d-flex align-items-center">
                                 </div>
                             </div>
-                            <div id="layout1-chart-3" class="layout-chart-1"></div>
-                        </div>
-                    </div>
-                    <div class="card card-block card-stretch card-height-helf">
-                        <div class="card-body">
-                            <div class="d-flex align-items-top justify-content-between">
-                                <div class="">
-                                    <p class="mb-0">Expenses</p>
-                                    <h5>$ 45,8956 K</h5>
-                                </div>
-                                <div class="card-header-toolbar d-flex align-items-center">
-                                </div>
-                            </div>
-                            <div id="layout1-chart-4" class="layout-chart-2"></div>
+                            <?php
+                            $sql = "SELECT `take_out_id`, `shortfall` FROM `returns`";
+                            $result = $conn->query($sql);
+
+                            // Create arrays for chart data
+                            $dates = array();
+                            $shortfalls = array();
+
+                            if ($result->num_rows > 0) {
+                            // Output data of each row
+                            while($row = $result->fetch_assoc()) {
+                            array_push($dates, $row["take_out_id"]);
+                            array_push($shortfalls, $row["shortfall"]);
+                            }
+                            } else {
+                            echo "0 results";
+                            }
+
+                            $conn->close();
+
+                            // Generate ApexCharts line chart
+                            echo "<html>
+
+                            <head>
+                                <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
+                            </head>
+
+                            <body>
+
+                                <div id='chart'></div>
+
+                                <script>
+                                var options = {
+                                    series: [{
+                                        name: 'Shortfall',
+                                        data: [" . implode(", ", $shortfalls) . "]
+                                    }],
+                                    colors: ['#FF4560'],
+      chart: {
+      height: 150,
+      type: 'line',
+      zoom: {
+        enabled: false
+      },
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 12,
+        left: 1,
+        blur: 2,
+        opacity: 0.2
+      },
+      toolbar: {
+        show: false
+      },
+      sparkline: {
+        enabled: true,
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth',
+      width: 3
+    },
+    title: {
+      text: '',
+      align: 'left'
+    },
+    grid: {
+      row: {
+        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+        opacity: 0.5
+      },
+    },
+                                    xaxis: {
+                                        categories: [" . implode(", ", array_map(function($date) { return "
+                                            '" . $date . "'
+                                            "; }, $dates)) . "
+                                        ]
+                                    }
+                                };
+
+                                var chart = new ApexCharts(document.querySelector('#chart'), options);
+
+                                chart.render();
+                                </script>
+
+                            </body>
+
+                            </html>";
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -213,44 +396,12 @@ require ("../../config/db-config.php");
                     <div class="card card-block card-stretch card-height">
                         <div class="card-header d-flex justify-content-between">
                             <div class="header-title">
-                                <h4 class="card-title">Order Summary</h4>
+                                <h4 class="card-title">Take Outs Vs Returns</h4>
                             </div>
                             <div class="card-header-toolbar d-flex align-items-center">
                             </div>
                         </div>
                         <div class="card-body pb-2">
-                            <div class="d-flex flex-wrap align-items-center mt-2">
-                                <div class="d-flex align-items-center progress-order-left">
-                                    <div class="progress progress-round m-0 orange conversation-bar" data-percent="46">
-                                        <span class="progress-left">
-                                            <span class="progress-bar"></span>
-                                        </span>
-                                        <span class="progress-right">
-                                            <span class="progress-bar"></span>
-                                        </span>
-                                        <div class="progress-value text-secondary">46%</div>
-                                    </div>
-                                    <div class="progress-value ml-3 pr-5 border-right">
-                                        <h5>$12,6598</h5>
-                                        <p class="mb-0">Average Orders</p>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center ml-5 progress-order-right">
-                                    <div class="progress progress-round m-0 primary conversation-bar" data-percent="46">
-                                        <span class="progress-left">
-                                            <span class="progress-bar"></span>
-                                        </span>
-                                        <span class="progress-right">
-                                            <span class="progress-bar"></span>
-                                        </span>
-                                        <div class="progress-value text-primary">46%</div>
-                                    </div>
-                                    <div class="progress-value ml-3">
-                                        <h5>$59,8478</h5>
-                                        <p class="mb-0">Top Orders</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body pt-0">
                             <div id="layout1-chart-5"></div>

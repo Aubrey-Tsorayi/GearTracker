@@ -12,4 +12,5 @@
       <link rel="stylesheet" href="../../assets/vendor/remixicon/fonts/remixicon.css">
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.26.3/dist/apexcharts.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
   </head>
