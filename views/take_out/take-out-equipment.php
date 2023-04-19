@@ -41,7 +41,7 @@ require ("../../config/db-config.php");
                         </div>
                         <div class="card-body">
                             <form method="post" action="../../controllers/take-out/take-out-equipment.php"
-                                data-toggle="validator">
+                                data-toggle="validator" onsubmit="return confirm('Make sure equipment is correct!');">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
