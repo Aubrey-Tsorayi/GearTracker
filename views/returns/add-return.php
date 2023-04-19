@@ -66,9 +66,9 @@ require ("../../config/db-config.php");
                             <form method="post" action="">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Reference No *</label>
+                                        <label>Takeout ID *</label>
                                         <input type="text" name="reference" class="form-control"
-                                            placeholder="Enter Reference No" required>
+                                            placeholder="Enter Takeout ID" required>
                                         <div class="help-block with-errors"></div>
                                         <br>
                                         <button type="submit" name="search" class="btn btn-success">Search</button>
