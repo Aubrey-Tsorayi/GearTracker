@@ -79,12 +79,14 @@ if (isset($_POST['submit'])) {
                     $cc = "godzitanaka@gmail.com";
                     //$headers = "From: GearTracker";
                     $subject = "$user_name New Equipment Takeout"; 
-                    $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name";
-                    if (mail($to,$subject, $message)) {
-                            echo "Email Sent Successfully";    
-                        } else {
-                       echo "Email Failed";
-                     };
+                    $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name \n\n Thank you for using GearTracker";
+                    // if (mail($to,$subject, $message)) {
+                    //         echo "Email Sent Successfully";    
+                    //     } else {
+                    //    echo "Email Failed";
+                    //  };
+                    $mail_sent = @mail( $to, $subject, $message);
+                    echo $mail_sent ? "Email sent successfully" : "Email failed";
                     
                 
 
