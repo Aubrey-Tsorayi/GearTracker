@@ -72,21 +72,8 @@ if (isset($_POST['submit'])) {
                 VALUES ('$title', '$message', '$datetime')");
 
                 // sending email
-                //require("../email/mailer.php");
-                    $user_name = $_SESSION['user_name'];
-                    //$to = $_SESSION['email'];
-                    $to = "godzitanaka@gmail.com";
-                    $cc = "godzitanaka@gmail.com";
-                    //$headers = "From: GearTracker";
-                    $subject = "$user_name New Equipment Takeout"; 
-                    $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name \n\n Thank you for using GearTracker";
-                    // if (mail($to,$subject, $message)) {
-                    //         echo "Email Sent Successfully";    
-                    //     } else {
-                    //    echo "Email Failed";
-                    //  };
-                    $mail_sent = @mail( $to, $subject, $message);
-                    echo $mail_sent ? '<script>alert("Email Sent Successfully")</script>' : '<script>alert("Email Failed")</script>';
+                require("../email/mailer.php");
+                    
                     
                 
 
