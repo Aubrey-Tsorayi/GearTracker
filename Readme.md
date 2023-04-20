@@ -1,4 +1,3 @@
-// write a readme for this project
 # Gear Tracker
 
 Gear Tracker is a sports inventory management system designed to help athletes, coaches, and sports teams keep track of their equipment and gear. The system allows users to easily manage their gear inventory, track equipment usage and maintenance, and generate reports on equipment usage and inventory status.
