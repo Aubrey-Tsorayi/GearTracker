@@ -7,6 +7,7 @@ if (isset($_POST['user'])) {
     // taking info from the view
     $user = $_POST['user'];
     $passw = $_POST['password'];
+    $current_date = date('Y-m-d H:i:s');
 
     // retrive user
     $sql = "SELECT * FROM `users` WHERE  `user_id` = '$user'";
@@ -22,6 +23,7 @@ if (isset($_POST['user'])) {
         $_SESSION['sport'] = $row['sport'];
         $_SESSION['email'] = $row['email'];
 
+        $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'Logged in', '$current_date')");
         // redirect to dashboard
         if ($row['level_access'] != 3) {
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';

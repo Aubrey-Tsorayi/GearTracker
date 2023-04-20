@@ -12,6 +12,7 @@ if (isset($_POST['submit'])){
     $user_id = $_POST['id'];
     $passw = $_POST['password'];
     $return = $_POST['return'];
+    $current_date = date('Y-m-d H:i:s');
 
     // checking if email address is already in the database
     $emails = mysqli_query($conn, "SELECT `email` FROM `users`");
@@ -47,6 +48,7 @@ if (isset($_POST['submit'])){
 
     // checking if query was successfull
     if($request){ 
+        $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'User Added', '$current_date')");
         echo '<script> window.location.href="../../views/users/list-users.php"; </script>';
     }
     else{

@@ -8,6 +8,7 @@ if (isset($_POST['name'])) {
     $code = $_POST['code'];
     $sport = $_POST['sport'];
     $quantity = $_POST['equipment'];
+    $current_date = date('Y-m-d H:i:s');
 
     // getting equipment codes from database and storing in an array
     $code_names = array();
@@ -23,6 +24,7 @@ if (isset($_POST['name'])) {
         // updating the quantity of the existing code
         $quantiy_update = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` + '$quantity', `quantity_available` = `quantity_available` + '$quantity' WHERE `equipment_code` = '$code'");
         if ($quantiy_update) {
+            $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'Equipment Updated', '$current_date')");
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
         } else {
             echo '<script> alert("Quantity unupdatable.");
@@ -38,6 +40,7 @@ if (isset($_POST['name'])) {
         $request = mysqli_query($conn, $query);
 
         if ($request) {
+            $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'Equipment Added, '$current_date')");
             echo '<script> window.location.href="../../views/equipment/list-equipment.php"; </script>';
         } else {
             echo '<script> alert("Make sure details are correct");

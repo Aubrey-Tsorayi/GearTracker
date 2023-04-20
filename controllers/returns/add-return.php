@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $quantity = $_POST['quantity'];
     $damaged = $_POST['damaged'];
     $description = $_POST['description'];
-    $current_date = date('Y-m-d');
+    $current_date = date('Y-m-d H:i:s');
     $admin = $_SESSION['user_name'];
     $equipment_name = $_POST['equipment_name'];
 
@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
         $request = mysqli_query($conn, $query);
 
         if ($request) {
+            $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'Returned', '$current_date')");
             echo '<script> window.location.href="../../views/returns/list-returns.php"; </script>';
         } else {
             echo '<script> alert("Return failed.");

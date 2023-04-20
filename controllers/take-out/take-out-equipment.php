@@ -63,6 +63,7 @@ if (isset($_POST['submit'])) {
 
             if ($request) { // checking if the query is a success
 
+                $log = mysqli_query($conn, "INSERT INTO `logs` (`user_name`, `action`, `date`) VALUES ('" . $_SESSION['user_name'] . "', 'Take Out', '$datetime')");
                 //notification message
                 $title = "Take Out";
                 $message = $_SESSION['user_name'] . " has taken out $quantity $equipment_name";
