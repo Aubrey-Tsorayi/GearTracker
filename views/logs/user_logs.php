@@ -58,10 +58,8 @@ require ("../../config/db-config.php");
                 <div class="col-lg-12">
                     <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                         <div>
-                            <h4 class="mb-3">Users</h4>
+                            <h4 class="mb-3">User Logs</h4>
                         </div>
-                        <a href="add-users.php" class="btn btn-danger add-list"><i class="las la-plus mr-3"></i>Add
-                            User</a>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -69,12 +67,9 @@ require ("../../config/db-config.php");
                         <table class="data-table table mb-0 tbl-server-info" id="table">
                             <thead class="bg-white text-uppercase">
                                 <tr class="ligth ligth-data">
-                                    <th>Student ID</th>
                                     <th>Name</th>
-                                    <th>Phone Number</th>
-                                    <th>Email</th>
-                                    <th>Sport</th>
                                     <th>Action</th>
+                                    <th>Time</th>
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
@@ -82,8 +77,8 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `user_id`, `user_name`, `email`, `phone_number`, `sport`
-                                            FROM users";
+                                            $sql = "SELECT `user_name`, `action`, `date`
+                                            FROM `logs`";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
@@ -94,28 +89,13 @@ require ("../../config/db-config.php");
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                         echo '
                                                                 <tr>
-                                                                    <td>' . $row['user_id'] . '</td>
                                                                     <td>' . $row['user_name'] . '</td>
-                                                                    <td>' . $row['phone_number'] . '</td>
-                                                                    <td>' . $row['email'] . '</td>
-                                                                    <td>' . $row['sport']. '</td>
-                                                                    <td>
-                                                                            <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                                                                href="?delete_user=' . $row['user_id'] . '"><i class="ri-delete-bin-line mr-0"></i></a>
-                                                                        </div>
-                                                                    </td>
+                                                                    <td>' . $row['action'] . '</td>
+                                                                    <td>' . $row['date'] . '</td>
+
                                                                 </tr>';
-                        }
-                    }
-                                                                                // handle delete request
-                                                                if (isset($_GET['delete_user'])) {
-                                                                    $user_id = $_GET['delete_user'];
-                                                                    $sql = "DELETE FROM users WHERE user_id = $user_id";
-                                                                    // asks user to confirm delete
-                                                                    mysqli_query($conn, $sql);
-                                                                    echo '<script> window.location.href="../../views/users/list-users.php"; </script>';
-                                                                    exit();
-                                                                }
+                                                }
+                                            }
                                                                 ?>
                             </tbody>
                         </table>
