@@ -73,19 +73,18 @@ if (isset($_POST['submit'])) {
 
                 // sending email
                 //require("../email/mailer.php");
-                $user_name = $_SESSION['user_name'] = $row['user_name'];
-                $to = $_SESSION['email'] = $row['email'];
-                $cc = "godzitanaka@gmail.com";
-                $subject = "$user_name New Equipment Takeout";
-                //will this work without the query
-                $txt = $_SESSION['user_name'] . " has taken out $quantity $equipment_name from the equipment inventory";
-                $message = "Thank you for using Geartracker ";
-                $headers = "From: GearTracker";
-
-                if (mail($to, $cc, $subject, $txt, $headers)) {
-                    echo "Email Sent Successfully";
-                } else {
-                    echo "Email Failed";
+                    $user_name = $_SESSION['user_name'];
+                    $to = $_SESSION['email'];
+                    $cc = "godzitanaka@gmail.com";
+                    $subject = "$user_name New Equipment Takeout"; 
+                    $txt = $_SESSION['user_name'] . " has taken out $quantity $equipment_name from the equipment inventory";
+                    $message = "Thank you for using Geartracker "
+                    //$header = "From: GearTracker";
+                    
+                    if (mail($to,$cc,$subject,$txt,$message)) {
+                        echo "Email Sent Successfully";    
+                    } else {
+                        echo "Email Failed";
                 }
 
                 echo '<script> window.location.href="../../views/take_out/equipment-taken.php"; </script>';

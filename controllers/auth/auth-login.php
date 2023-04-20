@@ -20,6 +20,7 @@ if (isset($_POST['user'])) {
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['access_level'] = $row['level_access'];
         $_SESSION['sport'] = $row['sport'];
+        $_SESSION['email'] = $row['email'];
 
         // redirect to dashboard
         if ($row['level_access'] != 3) {
