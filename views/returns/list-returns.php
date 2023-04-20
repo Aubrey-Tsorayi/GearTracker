@@ -98,16 +98,41 @@ require ("../../config/db-config.php");
 
                                             if ($resultCheck > 0) {
                                                 while ($row = mysqli_fetch_assoc($result)) {
+                                                    if(strcmp("Yes", $row['damaged']) == 0){
                                                         echo '
-                                                                <tr>
-                                                                    <td>' . $row['date'] . '</td>
-                                                                    <td>' . $row['take_out_id'] . '</td>
-                                                                    <td>' . $row['return_admin'] . '</td>
-                                                                    <td>' . $row['user_name'] . '</td>
-                                                                    <td>' . $row['shortfall'] . '</td>
-                                                                    <td>' . $row['damaged']. '</td>
-                                                                    <td>' . $row['description']. '</td>
-                                                                </tr>';
+                                                        <tr style="background-color: red;">
+                                                            <td>' . $row['date'] . '</td>
+                                                            <td>' . $row['take_out_id'] . '</td>
+                                                            <td>' . $row['return_admin'] . '</td>
+                                                            <td>' . $row['user_name'] . '</td>
+                                                            <td>' . $row['shortfall'] . '</td>
+                                                            <td>' . $row['damaged']. '</td>
+                                                            <td>' . $row['description']. '</td>
+                                                        </tr>';
+                                                    }else if (intval($row['shortfall']) > 0){
+                                                        echo '
+                                                        <tr style ="background-color: yellow;">
+                                                            <td>' . $row['date'] . '</td>
+                                                            <td>' . $row['take_out_id'] . '</td>
+                                                            <td>' . $row['return_admin'] . '</td>
+                                                            <td>' . $row['user_name'] . '</td>
+                                                            <td>' . $row['shortfall'] . '</td>
+                                                            <td>' . $row['damaged']. '</td>
+                                                            <td>' . $row['description']. '</td>
+                                                        </tr>';
+                                                    }else{
+                                                        echo '
+                                                        <tr>
+                                                            <td>' . $row['date'] . '</td>
+                                                            <td>' . $row['take_out_id'] . '</td>
+                                                            <td>' . $row['return_admin'] . '</td>
+                                                            <td>' . $row['user_name'] . '</td>
+                                                            <td>' . $row['shortfall'] . '</td>
+                                                            <td>' . $row['damaged']. '</td>
+                                                            <td>' . $row['description']. '</td>
+                                                        </tr>';
+                                                    }
+                                                       
                         }
                     }
 
