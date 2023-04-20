@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                     //    echo "Email Failed";
                     //  };
                     $mail_sent = @mail( $to, $subject, $message);
-                    echo $mail_sent ? "Email sent successfully" : "Email failed";
+                    echo $mail_sent ? '<script>alert("Email Sent Successfully")</script>' : '<script>alert("Email Failed")</script>';
                     
                 
 
