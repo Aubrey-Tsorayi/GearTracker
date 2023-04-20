@@ -123,10 +123,14 @@ require ("../../config/db-config.php");
                 </div>
                 <?php
                 if($_SESSION['access_level'] == 3){
-                    echo '<div class="col-lg-12">
+                    echo '
+                    <div class="col-lg-12">
                     <!-- add button to print table -->
-                    <button class="btn btn-danger add-list" onclick="printTable()"><i
-                            class="las la-plus mr-3"></i>Print</button>
+                    <button class="btn btn-danger add-list" onclick="printTable()">Print</button>
+                </div>
+                <div class="col-lg-12">
+                    <!-- add button to print user logs -->
+                    <button class="btn btn-danger logs" onclick="getLogs()">User Logs</button>
                 </div>';
                 }else{
                     
@@ -141,14 +145,14 @@ require ("../../config/db-config.php");
 
     <!-- Backend Bundle JavaScript -->
     <script>
-        function printTable() {
-            var table = document.getElementById('table');
-            var win = window.open('', '', 'height=700,width=700');
-            win.document.write(table.outerHTML);
-            win.document.close();
-            win.print();
-        }
-        </script>
+    function printTable() {
+        var table = document.getElementById('table');
+        var win = window.open('', '', 'height=700,width=700');
+        win.document.write(table.outerHTML);
+        win.document.close();
+        win.print();
+    }
+    </script>
     <?php
     require("../../includes/scripts.php");
     ?>
