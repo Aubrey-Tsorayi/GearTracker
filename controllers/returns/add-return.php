@@ -6,7 +6,6 @@ if (isset($_POST['submit'])) {
 
     // getting info from form
     $ref_code = $_POST['reference'];
-    $name = $_POST['name'];
     $returnee = $_POST['returnee'];
     $quantity = $_POST['quantity'];
     $damaged = $_POST['damaged'];
@@ -29,7 +28,7 @@ if (isset($_POST['submit'])) {
         $shortfall = $previous_quantity - $quantity;
 
         // calculating new availabe and updating the equipment table
-        $new_avaliable = $previous_quantity + $quantity;
+        //$new_avaliable = $previous_quantity + $quantity;
         $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = `quantity_available`  + '$quantity' WHERE `equipment_name` = '$equipment_name'");
 
         // insert into the returns table
@@ -38,6 +37,21 @@ if (isset($_POST['submit'])) {
 
         // updating the quantity in the equipment table, remove the short fall from total quantity
         $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall' WHERE `equipment_name` = '$equipment_name'");
+
+        //return email
+        //we will need to call out the takeout email address
+        
+                    //$to = $_SESSION['email'];
+                    $to = "godzitanaka@gmail.com";
+                    $cc = "godzitanaka@gmail.com";
+                    //$headers = "From: GearTracker";
+                    $subject = "$returnee Equipment Takeout Returned"; 
+                    $message = $returnee. " has Returned $quantity $equipment_name on $current_date\n\n
+                     There is $shortfall Shortfall \n\n
+                     Return Done by $admin
+                     \n\n Thank you for using GearTracker";
+                    $mail_sent = @mail( $to, $subject, $message);
+                    echo $mail_sent ? "Email Sent Successfully" : "Email Failed";
 
         $request = mysqli_query($conn, $query);
 

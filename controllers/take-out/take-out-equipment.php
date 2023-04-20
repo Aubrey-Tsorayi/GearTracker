@@ -74,9 +74,6 @@ if (isset($_POST['submit'])) {
                 // sending email
                 require("../email/mailer.php");
                     
-                    
-                
-
                 echo '<script> window.location.href="../../views/take_out/equipment-taken.php"; </script>';
             } else {
                 echo '<script> alert("Take Out failed");
