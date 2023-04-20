@@ -5,7 +5,7 @@ require ("../../config/db-config.php");
 if (isset($_POST['submit'])){
 
     // getting info from form
-    $name = $_POST['name'];
+    $name =  mysqli_real_escape_string($conn, $_POST['name']);
     $number =$_POST['number'];
     $email = $_POST['email'];
     $sport = $_POST['sport'];
