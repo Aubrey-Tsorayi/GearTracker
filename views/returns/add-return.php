@@ -136,13 +136,13 @@ require ("../../config/db-config.php");
                                             <input type="text" value="<?php echo $equipment_name?>" name="equipment_name" hidden>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <!-- <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Description (optional)</label>
                                             <input type="text" name="description" class="form-control"
                                                 value="N/A">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <button type="submit" name="submit" class="btn btn-danger mr-2">Add Returns</button>
                                 <button type="reset" class="btn btn-danger">Reset</button>

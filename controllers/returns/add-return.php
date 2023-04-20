@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $returnee = $_POST['returnee'];
     $quantity = $_POST['quantity'];
     $damaged = $_POST['damaged'];
-    $description = $_POST['description'];
+    //$description = $_POST['description'];
     $current_date = date('Y-m-d H:i:s');
     $admin = $_SESSION['user_name'];
     $equipment_name = $_POST['equipment_name'];
@@ -32,8 +32,8 @@ if (isset($_POST['submit'])) {
         $update_available = mysqli_query($conn, "UPDATE `equipment` SET `quantity_available` = `quantity_available`  + '$quantity' WHERE `equipment_name` = '$equipment_name'");
 
         // insert into the returns table
-        $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `description`, `return_admin`) 
-    VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged','$description', '$admin')";
+        $query = "INSERT INTO `returns` (`take_out_id`, `date`, `quantity`, `shortfall`, `damaged`, `return_admin`) 
+    VALUES ('$ref_code','$current_date','$quantity','$shortfall','$damaged', '$admin')";
 
         // updating the quantity in the equipment table, remove the short fall from total quantity
         $new_quantity = mysqli_query($conn, "UPDATE `equipment` SET `quantity` = `quantity` - '$shortfall' WHERE `equipment_name` = '$equipment_name'");
