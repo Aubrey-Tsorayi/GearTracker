@@ -78,7 +78,6 @@ require ("../../config/db-config.php");
                                     <th>User</th>
                                     <th>Short fall</th>
                                     <th>Damaged</th>
-                                    <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody class="ligth-body">
@@ -86,7 +85,7 @@ require ("../../config/db-config.php");
                                             //fetch data from db
 
                                             
-                                            $sql = "SELECT `returns`.`take_out_id`, `returns`.`date`, `returns`.`shortfall`, `returns`.`damaged`, `returns`.`description`, `returns`.`return_admin`, `users`.`user_name`
+                                            $sql = "SELECT `returns`.`take_out_id`, `returns`.`date`, `returns`.`shortfall`, `returns`.`damaged`, `returns`.`return_admin`, `users`.`user_name`
                                             FROM `returns`
                                             INNER JOIN `take_out` ON `returns`.`take_out_id` = `take_out`.`take_out_id`
                                             INNER JOIN `users` ON `take_out`.`user_id` = `users`.`user_id`";
@@ -107,7 +106,6 @@ require ("../../config/db-config.php");
                                                             <td>' . $row['user_name'] . '</td>
                                                             <td>' . $row['shortfall'] . '</td>
                                                             <td>' . $row['damaged']. '</td>
-                                                            <td>' . $row['description']. '</td>
                                                         </tr>';
                                                     }else if (intval($row['shortfall']) > 0){
                                                         echo '
@@ -118,7 +116,6 @@ require ("../../config/db-config.php");
                                                             <td>' . $row['user_name'] . '</td>
                                                             <td>' . $row['shortfall'] . '</td>
                                                             <td>' . $row['damaged']. '</td>
-                                                            <td>' . $row['description']. '</td>
                                                         </tr>';
                                                     }else{
                                                         echo '
@@ -129,7 +126,6 @@ require ("../../config/db-config.php");
                                                             <td>' . $row['user_name'] . '</td>
                                                             <td>' . $row['shortfall'] . '</td>
                                                             <td>' . $row['damaged']. '</td>
-                                                            <td>' . $row['description']. '</td>
                                                         </tr>';
                                                     }
                                                        
