@@ -78,7 +78,8 @@ require ("../../config/db-config.php");
 
                                             
                                             $sql = "SELECT `user_name`, `action`, `date`
-                                            FROM `logs`";
+                                            FROM `logs`
+                                            ORDER BY `date` DESC";
 
                                             //result
                                             $result = mysqli_query($conn, $sql);
