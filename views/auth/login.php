@@ -35,6 +35,7 @@
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-danger ">Sign In</button>
+                                                <a href="forget-password.php" style="color:grey;"><p style="text-align: right;">Forgot Password?</p></a>
                                             </form>
                                         </div>
                                     </div>
