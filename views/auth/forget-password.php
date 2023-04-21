@@ -16,7 +16,7 @@
                                     <div class="col-lg-7 align-self-center">
                                         <div class="p-3">
                                             <h2 class="mb-2">Forget Password?</h2>
-                                            <p>Please go and see the system adimnastror to rest your password.</p>
+                                            <p>Please go and see the system adiminstator to rest your password.</p>
                                             <hr>
                                         </div>
                                         <a href="login.php"><p style="text-align: right;">Sign In</p></a>
