@@ -41,10 +41,9 @@ if (isset($_POST['submit'])) {
         //return email
         //we will need to call out the takeout email address
         
-                    //$to = $_SESSION['email'];
-                    $to = "godzitanaka@gmail.com";
-                    $cc = "godzitanaka@gmail.com";
-                    //$headers = "From: GearTracker";
+                    $to = $_SESSION['email'];
+                    //$to = "godzitanaka@gmail.com";
+                                    
                     $subject = "$returnee Equipment Takeout Returned"; 
                     $message = $returnee. " has Returned $quantity $equipment_name on $current_date\n\n
                      There is $shortfall Shortfall \n\n
